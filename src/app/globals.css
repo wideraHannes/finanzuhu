@@ -12,6 +12,7 @@
   --font-heading: var(--font-inter);
   --color-owl: var(--owl);
   --color-owl-foreground: var(--owl-foreground);
+  --color-owl-accent: var(--owl-accent);
   --color-income: var(--income);
   --color-expense: var(--expense);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -73,28 +74,30 @@
   --destructive: oklch(0.58 0.2 25);
   --border: oklch(0.9 0.008 250);
   --input: oklch(0.9 0.008 250);
-  --ring: oklch(0.74 0.14 75);
+  --ring: oklch(0.42 0.16 287);
 
-  /* Brand: the owl's amber, and the two money directions. */
-  --owl: oklch(0.74 0.14 75);
-  --owl-foreground: oklch(0.21 0.02 258);
-  --income: oklch(0.6 0.11 185);
+  /* Brand: the owl's violet and teal (assets/logo_finanzuhu.jpeg),
+     plus the two money directions. */
+  --owl: oklch(0.42 0.16 287);
+  --owl-foreground: oklch(0.99 0.002 250);
+  --owl-accent: oklch(0.82 0.15 177);
+  --income: oklch(0.62 0.12 177);
   --expense: oklch(0.63 0.17 25);
 
   --chart-1: var(--income);
   --chart-2: var(--expense);
   --chart-3: var(--owl);
-  --chart-4: oklch(0.58 0.09 258);
+  --chart-4: oklch(0.6 0.13 287);
   --chart-5: oklch(0.7 0.05 256);
 
   --sidebar: oklch(0.97 0.005 250);
   --sidebar-foreground: oklch(0.21 0.02 258);
-  --sidebar-primary: oklch(0.27 0.025 258);
-  --sidebar-primary-foreground: oklch(0.985 0.003 250);
-  --sidebar-accent: oklch(0.93 0.01 250);
-  --sidebar-accent-foreground: oklch(0.21 0.02 258);
+  --sidebar-primary: var(--owl);
+  --sidebar-primary-foreground: var(--owl-foreground);
+  --sidebar-accent: oklch(0.93 0.025 287);
+  --sidebar-accent-foreground: oklch(0.33 0.13 287);
   --sidebar-border: oklch(0.9 0.008 250);
-  --sidebar-ring: oklch(0.74 0.14 75);
+  --sidebar-ring: var(--owl);
 }
 
 /* Dark theme — ink. This is the one the design was drawn for. */
@@ -116,27 +119,28 @@
   --destructive: oklch(0.68 0.18 25);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 14%);
-  --ring: oklch(0.78 0.14 78);
+  --ring: oklch(0.68 0.16 287);
 
-  --owl: oklch(0.78 0.14 78);
-  --owl-foreground: oklch(0.17 0.015 258);
-  --income: oklch(0.72 0.12 185);
+  --owl: oklch(0.68 0.16 287);
+  --owl-foreground: oklch(0.99 0.002 250);
+  --owl-accent: oklch(0.84 0.15 177);
+  --income: oklch(0.8 0.14 177);
   --expense: oklch(0.7 0.16 25);
 
   --chart-1: var(--income);
   --chart-2: var(--expense);
-  --chart-3: var(--owl);
-  --chart-4: oklch(0.66 0.09 258);
+  --chart-3: oklch(0.74 0.15 287);
+  --chart-4: oklch(0.62 0.14 287);
   --chart-5: oklch(0.55 0.04 256);
 
   --sidebar: oklch(0.2 0.017 258);
   --sidebar-foreground: oklch(0.96 0.005 250);
-  --sidebar-primary: oklch(0.78 0.14 78);
-  --sidebar-primary-foreground: oklch(0.17 0.015 258);
-  --sidebar-accent: oklch(0.28 0.02 258);
-  --sidebar-accent-foreground: oklch(0.96 0.005 250);
+  --sidebar-primary: var(--owl);
+  --sidebar-primary-foreground: var(--owl-foreground);
+  --sidebar-accent: oklch(0.32 0.06 287);
+  --sidebar-accent-foreground: oklch(0.97 0.01 287);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.78 0.14 78);
+  --sidebar-ring: var(--owl);
 }
 
 @layer base {

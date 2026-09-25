@@ -1,13 +1,12 @@
 <div align="center">
 
-<a href="https://www.codecentric.de/">
-  <img src="assets/codecentric_PrimLogo_farbe_rgb.png" alt="codecentric" width="260">
-</a>
+<img src="public/finanzuhu-logo.png" alt="Finanzuhu" width="420">
 
-# SDLC with AI Support
+# Finanzuhu — an SDLC with AI, end to end
 
-**A project template for walking through the complete Software Development
-Lifecycle** — from the raw backlog entry to the updated documentation.
+**The workshop project for walking through the complete Software Development
+Lifecycle with AI support** — from the raw backlog entry to the updated
+documentation, on a codebase that actually runs.
 
 <img src="assets/SDLC_loop.png" alt="The DevOps loop with the AI touchpoints per phase" width="620">
 
@@ -18,7 +17,7 @@ Lifecycle** — from the raw backlog entry to the updated documentation.
 ## What this is about
 
 AI does not only help with writing code, but at every station of the loop.
-This template covers the section from **Plan to Release** and makes it
+This repository covers the section from **Plan to Release** and makes it
 walkable: each step produces a Markdown file that the next one reads as input.
 
 ```
@@ -30,10 +29,13 @@ These files steer the AI and make its work repeatable, reviewable and
 shareable across the team. A ticket travels visibly through the folders
 instead of disappearing into a tool.
 
-## Run the dummy app
+**Finanzuhu** — the *uhu* is an eagle owl — is the app the process works on.
+It is not a toy stub: it runs, it has data, it has tests, and every story in
+the workshop changes it for real.
 
-The repository ships with **Finanzuhu**, a small personal-finance app that the
-workshop uses as its codebase. It needs nothing but Node:
+## Run the app
+
+It needs nothing but Node:
 
 ```bash
 npm install
@@ -53,6 +55,18 @@ committed bookings for a fictional household, plus the opening balance in
 "today" is the last booking in the file, so the app shows the same numbers on
 every machine on every day. `node scripts/check-data.mjs` re-checks the ledger.
 
+## Brand
+
+| asset | where it is used |
+| --- | --- |
+| [`assets/logo_finanzuhu.jpeg`](assets/logo_finanzuhu.jpeg) | the source artwork — everything below is cut from it |
+| `public/finanzuhu-logo.png` | full lockup, trimmed — the app header (`src/components/layout/brand.tsx`), README, Open Graph |
+| `src/app/favicon.ico`, `icon.png`, `apple-icon.png` | the owl alone — browser tab and home screen |
+
+The two brand colours live in [`src/app/globals.css`](src/app/globals.css) as
+`--owl` (the violet) and `--owl-accent` (the teal); charts, focus rings and
+the active navigation item all derive from them, in both themes.
+
 ## Getting started
 
 | I want to… | |
@@ -60,17 +74,20 @@ every machine on every day. `node scripts/check-data.mjs` re-checks the ledger.
 | start a run | [Instructions in the concept](CONCEPT.md#getting-started) |
 | understand how we work here | [`CONCEPT.md`](CONCEPT.md) |
 | get the prompt for a step | [`sdlc/standards/prompts/`](sdlc/standards/prompts/README.md) |
+| know what was built before the workshop | [`SETUP_PLAN.md`](SETUP_PLAN.md) |
 | refresh the SDLC material | [`prerequisites/`](prerequisites/README.md) |
 
 ## Layout
 
 ```
 src/             the Finanzuhu app — app router, features, lib
+public/          brand assets served by the app
 data/            the committed ledger the app reads
 plan/            how the app was cut into slices
 sdlc/            process artifacts — stories, plans, reviews, standards, prompts
 docs/            architecture documentation, diagrams, decisions
 tests/           test code and test data
+assets/          logo and workshop imagery
 prerequisites/   background material for reading up
 ```
 
@@ -87,6 +104,10 @@ code in the first workshop session.
 ---
 
 <div align="center">
+  <a href="https://www.codecentric.de/">
+    <img src="assets/codecentric_PrimLogo_farbe_rgb.png" alt="codecentric" width="180">
+  </a>
+  <br>
   <sub>Created in the workshop <em>AI-Assisted Coding</em> ·
   <a href="https://www.codecentric.de/">codecentric AG</a></sub>
 </div>

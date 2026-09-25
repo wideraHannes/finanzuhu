@@ -12,8 +12,18 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Finanzuhu",
+  title: {
+    default: "Finanzuhu",
+    template: "%s · Finanzuhu",
+  },
   description: "Personal finance overview for one checking account.",
+  applicationName: "Finanzuhu",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  openGraph: {
+    title: "Finanzuhu",
+    description: "Personal finance overview for one checking account.",
+    images: ["/finanzuhu-logo.png"],
+  },
 };
 
 export default function RootLayout({
