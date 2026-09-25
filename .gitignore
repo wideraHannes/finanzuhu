@@ -1,0 +1,17 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.idea/
+.vscode/
+*.swp
+
+# Environments & secrets
+.env
+.env.*
+
+# Build output & dependencies
+build/
+dist/
+node_modules/
