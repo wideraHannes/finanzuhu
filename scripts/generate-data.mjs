@@ -8,8 +8,8 @@
 //
 // Shape of a month: salary in, twelve fixed costs out, a week-shaped stream of
 // variable spending. The variable stream is scaled at the end so every month
-// lands on the net result the plan asks for (July and September slightly
-// positive, August negative because of the holiday trip).
+// lands on the net result below — at least 300 EUR left over everywhere, with
+// August the tightest because of the summer trip.
 
 import { writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -22,17 +22,17 @@ const TO = '2026-09-25';
 const SEED = 20260701;
 
 // Salary lands on the 25th. The plan wrote "28th", but the ledger ends on
-// 2026-09-25, and a September without salary would make the month deeply
-// negative — two red months instead of the one August is meant to be.
+// 2026-09-25, and a September without salary would leave the month 1400 EUR
+// short instead of the 300 EUR up every month is supposed to be.
 const SALARY_DAY = 25;
 const SALARY = 3000.0;
 
 // What each month has to end on. Sum with the 6450.00 opening balance to get
 // the closing balance the dashboard shows.
 const MONTH_TARGET_NET = {
-  '2026-07': 287.4,
-  '2026-08': -943.15,
-  '2026-09': 212.6,
+  '2026-07': 486.3,
+  '2026-08': 324.75,
+  '2026-09': 512.4,
 };
 
 // ---------------------------------------------------------------- randomness
@@ -102,7 +102,6 @@ for (const month of months) {
 }
 
 const extraIncome = [
-  ['2026-07-17', 600.0, 'Freelance invoice 2026-04', 'Weserwerk Studio', 'Other Income', 'transfer'],
   ['2026-09-08', 341.8, 'Tax assessment 2025', 'Finanzamt Hamburg-Nord', 'Other Income', 'transfer'],
   ['2026-09-21', 45.0, 'Concert tickets paid back', 'Jonas Brinkmann', 'Other Income', 'transfer'],
 ];
@@ -113,7 +112,7 @@ for (const [date, amount, description, counterparty, category, method] of extraI
 // --- fixed costs -----------------------------------------------------------
 
 const FIXED = [
-  [1, 1180.0, 'Rent', 'Hausverwaltung Meyer', 'Rent', 'direct_debit'],
+  [1, 800.0, 'Rent', 'Hausverwaltung Meyer', 'Rent', 'direct_debit'],
   [1, 58.0, 'Public transport pass', 'HVV Hamburg', 'Mobility', 'direct_debit'],
   [2, 21.4, 'Liability and household insurance', 'HUK-COBURG', 'Insurance', 'direct_debit'],
   [2, 32.0, 'Health insurance top-up', 'Techniker Krankenkasse', 'Insurance', 'direct_debit'],
@@ -146,22 +145,20 @@ for (const month of months) {
 
 // --- the August holiday ----------------------------------------------------
 
+// A week on Rügen by train. Modest on purpose: the month still has to end
+// 300 EUR up, so a flight-and-hotel holiday does not fit any more.
 const TRIP_FROM = '2026-08-07';
-const TRIP_TO = '2026-08-16';
+const TRIP_TO = '2026-08-12';
 
 const TRIP = [
-  ['2026-08-03', 412.0, 'Flights Hamburg - Lisbon', 'Lufthansa', 'Travel', 'card'],
-  ['2026-08-03', 638.0, 'Hotel Lisbon 9 nights', 'Booking.com', 'Travel', 'card'],
-  ['2026-08-07', 34.2, 'Airport transfer', 'Taxi Lisboa', 'Mobility', 'card'],
-  ['2026-08-08', 68.4, 'Dinner Alfama', 'Restaurante Ramiro', 'Restaurants & Cafés', 'card'],
-  ['2026-08-09', 24.0, 'Museum tickets', 'Museu Gulbenkian', 'Leisure & Culture', 'card'],
-  ['2026-08-10', 12.5, 'Tram day pass', 'Carris Lisboa', 'Mobility', 'card'],
-  ['2026-08-11', 52.3, 'Lunch and drinks', 'Time Out Market', 'Restaurants & Cafés', 'card'],
-  ['2026-08-12', 81.9, 'Day trip Sintra', 'Comboios de Portugal', 'Travel', 'card'],
-  ['2026-08-13', 46.0, 'Souvenirs', 'Loja Alfama', 'Shopping & Clothing', 'card'],
-  ['2026-08-14', 39.6, 'Seafood dinner', 'Cervejaria Cabecas', 'Restaurants & Cafés', 'card'],
-  ['2026-08-15', 28.8, 'Rooftop bar', 'Park Bar Lisboa', 'Bars & Nightlife', 'card'],
-  ['2026-08-16', 33.5, 'Transfer to airport', 'Taxi Lisboa', 'Mobility', 'card'],
+  ['2026-08-02', 84.0, 'Train tickets Hamburg - Binz', 'DB Fernverkehr', 'Travel', 'card'],
+  ['2026-08-02', 320.0, 'Apartment Binz 5 nights', 'Ostsee Ferienwohnungen', 'Travel', 'transfer'],
+  ['2026-08-07', 38.5, 'Dinner at the pier', 'Strandrestaurant Seebrücke', 'Restaurants & Cafés', 'card'],
+  ['2026-08-08', 24.0, 'Bike rental', 'Radverleih Binz', 'Mobility', 'card'],
+  ['2026-08-09', 16.8, 'Coffee and cake', 'Café Strandkorb', 'Restaurants & Cafés', 'card'],
+  ['2026-08-10', 29.4, 'Groceries for the flat', 'EDEKA Binz', 'Groceries', 'card'],
+  ['2026-08-11', 18.0, 'Chalk cliffs park entry', 'Nationalpark Jasmund', 'Leisure & Culture', 'card'],
+  ['2026-08-12', 12.6, 'Bus to the station', 'Rügener Personennahverkehr', 'Mobility', 'card'],
 ];
 for (const [date, amount, description, counterparty, category, method] of TRIP) {
   spend(date, amount, description, counterparty, category, method, false);
@@ -169,7 +166,7 @@ for (const [date, amount, description, counterparty, category, method] of TRIP) 
 
 // --- the two larger one-offs ----------------------------------------------
 
-spend('2026-07-19', 449.0, 'Desk and shelving', 'IKEA Hamburg-Moorfleet', 'Household', 'card', false);
+spend('2026-07-19', 249.0, 'Desk and shelving', 'IKEA Hamburg-Moorfleet', 'Household', 'card', false);
 spend('2026-09-12', 289.9, 'Autumn wardrobe', 'Zara', 'Shopping & Clothing', 'card', false);
 
 // --- everyday spending -----------------------------------------------------
