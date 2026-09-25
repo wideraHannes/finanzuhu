@@ -16,7 +16,9 @@ const months = new Map();
 for (const row of rows) {
   const [, date, amount] = row.split(',');
   const m = months.get(date.slice(0, 7)) ?? { in: 0, out: 0, rows: 0 };
-  Number(amount) > 0 ? (m.in += Number(amount)) : (m.out += Number(amount));
+  const value = Number(amount);
+  if (value > 0) m.in += value;
+  else m.out += value;
   m.rows += 1;
   months.set(date.slice(0, 7), m);
 }
