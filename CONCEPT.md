@@ -2,8 +2,16 @@
 
 ## Purpose
 
-A **demo project** for walking through the Software Development Lifecycle with
-AI support — with examples and a structure that makes the flow visible.
+Walking through the Software Development Lifecycle with AI support — with a
+structure that makes the flow visible, and a running codebase to practise it on.
+
+Two layers, deliberately kept apart:
+
+- **The process** — the SDLC artifacts, standards and prompts in `sdlc/`. This
+  is the subject.
+- **The demo project** — **Finanzuhu**, a personal-finance app in `src/`. This
+  is the material the process is applied to, nothing more. It runs, it has data,
+  it has tests, so every story changes something real.
 
 The basis is the [SDLC Workshop Refresher](prerequisites/sdlc_refresher.md) from
 the *AI-Assisted Coding* workshop by
@@ -53,16 +61,23 @@ out again together with the AI and overwritten.
 
 ## Getting started
 
-This repository is a **template**: the process is in place, the project is
-missing. Every run starts with a fresh copy.
+The process is in place and the codebase it works on exists. What is missing is
+the part that cannot be prepared: the team's own standards.
 
-1. **Decide on domain and tech stack.** Small enough that one story can be
-   implemented in a single session.
+1. **Derive the steering documents from the running code.**
+   `sdlc/standards/architecture.md` and `code_style.md` ship empty on purpose —
+   they are worked out together with the AI, against the Finanzuhu code, before
+   the first implementation plan. The same goes for Definition of Ready and
+   Definition of Done: the existing versions are illustrative material, not a
+   result, and get overwritten.
 2. **Put raw stories into `sdlc/backlog/unrefined/`** (`ST-001.md`, …).
-   Deliberately unfinished: they are the input for the first step.
-3. **Start** with [`sdlc/standards/prompts/01_plan.md`](sdlc/standards/prompts/01_plan.md).
+   Deliberately unfinished: they are the input for the first step. The features
+   Finanzuhu is missing on purpose are listed in the
+   [README](README.md#the-demo-project-finanzuhu).
+3. **Start** with [`sdlc/standards/prompts/01_plan.md`](sdlc/standards/prompts/01_plan.md)
+   and take one story through the full loop.
 
-`architecture.md` and `code_style.md` are *not* filled in up front. They emerge
-during the run itself — together with the AI, before the first implementation
-plan. The same goes for Definition of Ready and Done: the existing versions are
-illustrative material, not a result.
+Start slow — the first pass is about understanding each step, not about
+throughput. The cadence picks up once the steering documents hold and the loop
+is familiar. What stays fixed is the order of the steps and the artifact each
+one leaves behind.
