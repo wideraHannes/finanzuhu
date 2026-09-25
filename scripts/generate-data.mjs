@@ -27,7 +27,7 @@ const SEED = 20260701;
 const SALARY_DAY = 25;
 const SALARY = 3000.0;
 
-// What each month has to end on. Sum with the 2450.00 opening balance to get
+// What each month has to end on. Sum with the 6450.00 opening balance to get
 // the closing balance the dashboard shows.
 const MONTH_TARGET_NET = {
   '2026-07': 287.4,
