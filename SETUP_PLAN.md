@@ -33,9 +33,9 @@ first screen answers it or qualifies it.
 - Category breakdown of the selected range (top categories, bar list with share).
 
 **F2 — Transactions (`/transactions`)**
-- Full ledger, TanStack Table: sorting, full-text search, category filter,
-  income/expense toggle, month grouping.
-- Row detail (merchant, method, category, recurring flag).
+- Full ledger: sorting by date and amount, full-text search, category filter,
+  income/expense toggle.
+- Every row shows merchant, method, category and the signed amount.
 
 Deliberately **not** built now — these are the workshop’s playground:
 budgets per category, recurring-contract detection, forecast to end of month,
@@ -58,7 +58,7 @@ Light and dark theme both ship.
 | Styling | **Tailwind CSS v4** | tokens in CSS, no config sprawl |
 | Components | **shadcn/ui** (Radix under the hood) | owned code in `src/components/ui`, fully restylable |
 | Server state | **TanStack Query v5** | as requested; cache/loading/error handled once |
-| Table | **TanStack Table v8** | headless, pairs with shadcn table primitives |
+| Table | none — the shadcn `<table>` primitives | filtering is server-side, sorting is one `.sort()`; a table library would add a concept and break React Compiler memoisation |
 | Charts | **Recharts** | good React fit, easy to theme |
 | CSV parsing | none — 15 lines of `split` | the file is ours; a parser dependency would explain nothing |
 | Tests | **Vitest** | two example tests on the money math, no suite |
@@ -93,7 +93,7 @@ finanzuhu/
 │   │   └── layout/             # sidebar, header, theme toggle
 │   ├── features/
 │   │   ├── dashboard/          # BalanceHero, CashflowChart, RangeTabs, CategoryBreakdown
-│   │   └── transactions/       # TransactionTable, columns, filters
+│   │   └── transactions/       # TransactionTable, fetch + filter types
 │   └── lib/
 │       ├── transactions.ts     # read + parse data/transactions.csv (cached)
 │       ├── finance.ts          # pure aggregation: balance, summarize, byCategory, series

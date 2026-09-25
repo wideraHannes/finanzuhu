@@ -7,18 +7,21 @@ import { Card, CardContent, CardHeader, CardTitle, CardAction } from "@/componen
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 import { formatDate, formatSignedEUR } from "@/lib/format";
-import { fetchTransactions } from "@/features/dashboard/summary";
+import {
+  fetchTransactions,
+  NO_FILTERS,
+} from "@/features/transactions/transactions";
 
 const RECENT = 8;
 
 export function RecentActivity() {
   const { data } = useQuery({
-    queryKey: ["transactions", {}],
-    queryFn: fetchTransactions,
+    queryKey: ["transactions", NO_FILTERS],
+    queryFn: () => fetchTransactions(NO_FILTERS),
   });
 
   // The ledger is sorted ascending, so the newest bookings are at the end.
-  const recent = data ? data.slice(-RECENT).reverse() : undefined;
+  const recent = data ? data.items.slice(-RECENT).reverse() : undefined;
 
   return (
     <Card>

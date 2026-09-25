@@ -6,7 +6,8 @@ export function GET(request: Request) {
   const category = params.get("category") ?? "";
   const type = params.get("type") ?? "";
 
-  const items = getTransactions().filter(
+  const all = getTransactions();
+  const items = all.filter(
     (t) =>
       (!q ||
         t.description.toLowerCase().includes(q) ||
@@ -15,5 +16,10 @@ export function GET(request: Request) {
       (!type || t.type === type),
   );
 
-  return Response.json({ items });
+  return Response.json({
+    items,
+    // The filter UI needs both even when the filters match nothing.
+    total: all.length,
+    categories: [...new Set(all.map((t) => t.category))].sort(),
+  });
 }
