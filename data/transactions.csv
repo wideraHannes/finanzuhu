@@ -38,7 +38,7 @@ tx_0036,2026-07-22,-20.35,Online course,Udemy,Education,expense,card,false
 tx_0037,2026-07-22,-150.00,Cash withdrawal,Hamburger Sparkasse,Cash Withdrawal,expense,atm,false
 tx_0038,2026-07-23,-8.30,Ticket,DB Vertrieb,Mobility,expense,card,false
 tx_0039,2026-07-24,-60.90,Refuelling,TotalEnergies,Fuel,expense,card,false
-tx_0040,2026-07-25,3000.00,Salary July,Nordlicht Logistik GmbH,Salary,income,transfer,true
+tx_0040,2026-07-25,3000.00,Salary July,ForrestAnimals AG,Salary,income,transfer,true
 tx_0041,2026-07-25,-13.34,Eating out,Bäckerei Junge,Restaurants & Cafés,expense,card,false
 tx_0042,2026-07-26,-12.50,Groceries,Penny,Groceries,expense,card,false
 tx_0043,2026-07-26,-36.62,Gift,Ärzte ohne Grenzen,Gifts & Donations,expense,card,false
@@ -78,7 +78,7 @@ tx_0076,2026-08-21,-11.63,Groceries,ALDI SÜD,Groceries,expense,card,false
 tx_0077,2026-08-22,-7.34,Eating out,Trattoria da Vinci,Restaurants & Cafés,expense,card,false
 tx_0078,2026-08-22,-49.33,Clothing,H&M,Shopping & Clothing,expense,card,false
 tx_0079,2026-08-24,-150.00,Cash withdrawal,Hamburger Sparkasse,Cash Withdrawal,expense,atm,false
-tx_0080,2026-08-25,3000.00,Salary August,Nordlicht Logistik GmbH,Salary,income,transfer,true
+tx_0080,2026-08-25,3000.00,Salary August,ForrestAnimals AG,Salary,income,transfer,true
 tx_0081,2026-08-27,-21.27,Groceries,Lidl,Groceries,expense,card,false
 tx_0082,2026-08-28,-18.20,Eating out,Burger Base,Restaurants & Cafés,expense,card,false
 tx_0083,2026-08-29,-28.00,Groceries,REWE,Groceries,expense,card,false
@@ -125,6 +125,6 @@ tx_0123,2026-09-21,45.00,Concert tickets paid back,Jonas Brinkmann,Other Income,
 tx_0124,2026-09-21,-3.09,Ticket,HVV Ticketautomat,Mobility,expense,card,false
 tx_0125,2026-09-22,-43.60,Refuelling,Shell,Fuel,expense,card,false
 tx_0126,2026-09-24,-200.00,Cash withdrawal,Hamburger Sparkasse,Cash Withdrawal,expense,atm,false
-tx_0127,2026-09-25,3000.00,Salary September,Nordlicht Logistik GmbH,Salary,income,transfer,true
+tx_0127,2026-09-25,3000.00,Salary September,ForrestAnimals AG,Salary,income,transfer,true
 tx_0128,2026-09-25,-18.71,Groceries,REWE,Groceries,expense,card,false
 tx_0129,2026-09-25,-41.82,Eating out,Bäckerei Junge,Restaurants & Cafés,expense,card,false

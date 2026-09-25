@@ -93,7 +93,7 @@ for (const month of months) {
     date,
     amount: SALARY,
     description: `Salary ${monthName(date)}`,
-    counterparty: 'Nordlicht Logistik GmbH',
+    counterparty: 'ForrestAnimals AG',
     category: 'Salary',
     type: 'income',
     method: 'transfer',
