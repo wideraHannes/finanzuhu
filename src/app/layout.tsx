@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 
 import { AppShell } from "@/components/layout/app-shell";
 import { ThemeProvider } from "@/components/layout/theme-provider";
+import { Providers } from "@/app/providers";
 import "./globals.css";
 
 const inter = Inter({
@@ -28,7 +29,9 @@ export default function RootLayout({
     >
       <body className="min-h-full">
         <ThemeProvider>
-          <AppShell>{children}</AppShell>
+          <Providers>
+            <AppShell>{children}</AppShell>
+          </Providers>
         </ThemeProvider>
       </body>
     </html>
