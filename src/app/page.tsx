@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
+import { Button } from "@/components/ui/button";
 import { BalanceHero } from "@/features/dashboard/balance-hero";
 import { CashflowChart } from "@/features/dashboard/cashflow-chart";
 import { CategoryList } from "@/features/dashboard/category-list";
@@ -16,16 +17,21 @@ export default function DashboardPage() {
   // The only state on this screen; chart, tiles and categories all read it.
   const [range, setRange] = useState<Range>("month");
 
-  const { data, isError } = useQuery({
+  const { data, isError, refetch } = useQuery({
     queryKey: ["summary", range],
     queryFn: () => fetchSummary(range),
   });
 
   if (isError) {
     return (
-      <p className="text-sm text-expense">
-        The summary could not be loaded. Reload the page to try again.
-      </p>
+      <div className="space-y-3 py-10 text-center">
+        <p className="text-sm text-muted-foreground">
+          The summary could not be loaded.
+        </p>
+        <Button variant="outline" onClick={() => refetch()}>
+          Try again
+        </Button>
+      </div>
     );
   }
 

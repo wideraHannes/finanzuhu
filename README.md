@@ -30,6 +30,29 @@ These files steer the AI and make its work repeatable, reviewable and
 shareable across the team. A ticket travels visibly through the folders
 instead of disappearing into a tool.
 
+## Run the dummy app
+
+The repository ships with **Finanzuhu**, a small personal-finance app that the
+workshop uses as its codebase. It needs nothing but Node:
+
+```bash
+npm install
+npm run dev     # http://localhost:3000
+npm test        # the two example tests on the money math
+```
+
+Two screens. **Overview** (`/`) answers *how much money do we have*: balance,
+free-to-spend, a cashflow chart over week / month / three months, in-out-net
+tiles, the top categories and the last eight bookings. **Transactions**
+(`/transactions`) is the full ledger — searchable, filterable by category and
+direction, sortable by date and amount.
+
+All numbers come from [`data/transactions.csv`](data/transactions.csv), 131
+committed bookings for a fictional household, plus the opening balance in
+[`data/account.json`](data/account.json). There is no database and no clock:
+"today" is the last booking in the file, so the app shows the same numbers on
+every machine on every day. `node scripts/check-data.mjs` re-checks the ledger.
+
 ## Getting started
 
 | I want to… | |
@@ -42,6 +65,9 @@ instead of disappearing into a tool.
 ## Layout
 
 ```
+src/             the Finanzuhu app — app router, features, lib
+data/            the committed ledger the app reads
+plan/            how the app was cut into slices
 sdlc/            process artifacts — stories, plans, reviews, standards, prompts
 docs/            architecture documentation, diagrams, decisions
 tests/           test code and test data
@@ -53,8 +79,10 @@ process flow are in [`sdlc/README.md`](sdlc/README.md).
 
 ## Status
 
-This repository is a **template**: the process is in place, the project is
-missing. Domain, tech stack and application code come with each run.
+The process is in place and the codebase it works on exists: Finanzuhu runs,
+with two features and two tests. `sdlc/standards/architecture.md` and
+`code_style.md` stay empty on purpose — they are derived from this running
+code in the first workshop session.
 
 ---
 

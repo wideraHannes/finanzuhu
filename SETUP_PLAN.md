@@ -62,7 +62,7 @@ Light and dark theme both ship.
 | Charts | **Recharts** | good React fit, easy to theme |
 | CSV parsing | none — 15 lines of `split` | the file is ours; a parser dependency would explain nothing |
 | Tests | **Vitest** | two example tests on the money math, no suite |
-| Lint/format | ESLint (next config) + Prettier | |
+| Lint/format | ESLint (next config) | one tool, zero configuration of our own |
 
 Node 24, npm. Deployment is out of scope — `npm run dev` is the target.
 

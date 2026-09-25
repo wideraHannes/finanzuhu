@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/table";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
-import { formatDate, formatSignedEUR } from "@/lib/format";
+import { formatShortDate, formatSignedEUR } from "@/lib/format";
 import type { Transaction } from "@/lib/finance";
 
 /** Only date and amount sort — the other three columns have no useful order. */
@@ -130,9 +130,9 @@ export function TransactionTable({
           rows.map((transaction) => (
             <TableRow key={transaction.id}>
               <TableCell className="tabular text-muted-foreground">
-                {formatDate(transaction.date)}
+                {formatShortDate(transaction.date)}
               </TableCell>
-              <TableCell className="max-w-[18rem] whitespace-normal">
+              <TableCell className="max-w-[9rem] sm:max-w-[18rem]">
                 <p className="truncate">{transaction.description}</p>
                 <p className="truncate text-xs text-muted-foreground">
                   {transaction.counterparty}

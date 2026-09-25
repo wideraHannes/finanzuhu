@@ -11,6 +11,14 @@ const day = new Intl.DateTimeFormat("de-DE", {
   year: "numeric",
 });
 
+// The table shows one date per row and has to fit a 380px phone next to the
+// amount, so there it is numbers only.
+const shortDay = new Intl.DateTimeFormat("de-DE", {
+  day: "2-digit",
+  month: "2-digit",
+  year: "2-digit",
+});
+
 /** The single place euro amounts get rounded and formatted. */
 export function formatEUR(amount: number): string {
   return eur.format(amount);
@@ -24,4 +32,9 @@ export function formatSignedEUR(amount: number): string {
 /** "2026-09-25" -> "25. Sep. 2026" */
 export function formatDate(iso: string): string {
   return day.format(new Date(`${iso}T00:00:00`));
+}
+
+/** "2026-09-25" -> "25.09.26" */
+export function formatShortDate(iso: string): string {
+  return shortDay.format(new Date(`${iso}T00:00:00`));
 }

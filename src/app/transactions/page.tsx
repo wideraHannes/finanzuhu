@@ -127,7 +127,8 @@ export default function TransactionsPage() {
       </div>
 
       <Card>
-        <CardContent>
+        {/* Full bleed on a phone: the five columns need every pixel. */}
+        <CardContent className="px-2 md:px-(--card-spacing)">
           {isError ? (
             <div className="space-y-3 py-10 text-center">
               <p className="text-sm text-muted-foreground">
