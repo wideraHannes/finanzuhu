@@ -5,8 +5,8 @@ import { useQuery } from "@tanstack/react-query";
 
 import { Button } from "@/components/ui/button";
 import { BalanceHero } from "@/features/dashboard/balance-hero";
+import { BudgetList } from "@/features/dashboard/budget-list";
 import { CashflowChart } from "@/features/dashboard/cashflow-chart";
-import { CategoryList } from "@/features/dashboard/category-list";
 import { RangeTabs } from "@/features/dashboard/range-tabs";
 import { RecentActivity } from "@/features/dashboard/recent-activity";
 import { SummaryTiles } from "@/features/dashboard/summary-tiles";
@@ -14,7 +14,8 @@ import { fetchSummary } from "@/features/dashboard/summary";
 import type { Range } from "@/lib/finance";
 
 export default function DashboardPage() {
-  // The only state on this screen; chart, tiles and categories all read it.
+  // The only state on this screen; the chart and the tiles read it. The budget
+  // card is always the current calendar month.
   const [range, setRange] = useState<Range>("month");
 
   const { data, isError, refetch } = useQuery({
@@ -49,7 +50,7 @@ export default function DashboardPage() {
       </div>
 
       <div className="grid items-start gap-4 lg:grid-cols-2">
-        <CategoryList data={data} showBudgets={range === "month"} />
+        <BudgetList data={data} />
         <RecentActivity />
       </div>
     </div>

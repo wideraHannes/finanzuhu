@@ -1,6 +1,6 @@
 import "server-only";
 
-import { readFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const FILE = join(process.cwd(), "data", "budgets.json");
@@ -39,4 +39,20 @@ export function getBudgets(): Budgets {
   }
   cache = budgets;
   return cache;
+}
+
+/**
+ * Write one category's planned amount back to the plan file.
+ *
+ * The whole file is rewritten from the sanitised plan, so a hand-edited typo
+ * never survives a save. The amount is rounded to cents — the euro input in
+ * the UI has no use for more precision, and a float tail would show up in the
+ * ratio. Returns the new plan; the in-process cache is replaced with it, which
+ * is the only reason a reader sees the change without a restart.
+ */
+export function setBudget(category: string, amount: number): Budgets {
+  const next: Budgets = { ...getBudgets(), [category]: Math.round(amount * 100) / 100 };
+  writeFileSync(FILE, `${JSON.stringify(next, null, 2)}\n`, "utf8");
+  cache = next;
+  return next;
 }
