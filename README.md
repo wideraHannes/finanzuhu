@@ -50,13 +50,12 @@ One story at a time, through the full loop. We start slow — the first pass is
 about understanding each step, not about throughput — and pick up pace once the
 steering documents are in place and the loop feels familiar.
 
-**First, the ground rules — once.** Two files are deliberately shipped empty:
-[`sdlc/standards/architecture.md`](sdlc/standards/architecture.md) and
-[`code_style.md`](sdlc/standards/code_style.md). We derive them *from the
-running Finanzuhu code*, together with the AI, before the first implementation
-plan. Definition of Ready and Definition of Done are already in the repository —
-as illustrative material, not as the final word: we work both out again and
-overwrite them.
+**First, the ground rules — once.** One file is deliberately shipped empty:
+[`sdlc/standards/architecture.md`](sdlc/standards/architecture.md). We derive it
+*from the running Finanzuhu code*, together with the AI, before the first
+implementation plan. Definition of Ready and Definition of Done are already in
+the repository — as illustrative material, not as the final word: we work both
+out again and overwrite them.
 
 **Then the loop, per story:**
 
