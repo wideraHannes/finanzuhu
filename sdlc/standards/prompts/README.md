@@ -1,40 +1,16 @@
-# Standard prompts
+# Finanzuhu SDLC prompts
 
-The recurring prompts of the SDLC — one per step, with the paths of this
-repository. To copy, not to memorize.
+These fixed, copy-ready prompts support one ticket at a time. Replace every `ST-XXX` with the ticket ID, then submit the prompt unchanged. Each required artifact is referenced with `@`, so an agent can open the story, plan, review, and standards directly.
 
-| File | Step | Produces |
-| --- | --- | --- |
-| [`01_plan.md`](01_plan.md) | Story refinement | `backlog/refined/ST-XXX.md` |
-| [`02_code.md`](02_code.md) | Implementation planning & execution | `backlog/plans/ST-XXX_plan.md`, code |
-| [`03_test_release.md`](03_test_release.md) | Review & rework | `backlog/reviews/ST-XXX_review.md` |
-| [`04_documentation.md`](04_documentation.md) | Documentation | `docs/` |
+The prompts can also serve as a workflow reference when a step needs to be adapted. Keep the required `@` references and output locations when adapting them.
 
-`ST-XXX` is to be replaced everywhere with the real identifier of the work
-package.
+| Step | Prompt                                                                   | Input                                             | Output                                   |
+| ---- | ------------------------------------------------------------------------ | ------------------------------------------------- | ---------------------------------------- |
+| 1    | [`01_refine_story.md`](01_refine_story.md)                               | `@sdlc/backlog/unrefined/ST-XXX.md`               | `@sdlc/backlog/refined/ST-XXX.md`        |
+| 2A   | [`02a_create_implementation_plan.md`](02a_create_implementation_plan.md) | refined ticket                                    | `@sdlc/backlog/plans/ST-XXX_plan.md`     |
+| 2B   | [`02b_review_implementation_plan.md`](02b_review_implementation_plan.md) | refined ticket and initial plan                   | `@sdlc/backlog/plans/ST-XXX_plan_v2.md`  |
+| 3    | [`03_implement_story.md`](03_implement_story.md)                         | refined ticket and reviewed plan                  | application code and tests               |
+| 4A   | [`04a_review_implementation.md`](04a_review_implementation.md)           | refined ticket, reviewed plan, and implementation | `@sdlc/backlog/reviews/ST-XXX_review.md` |
+| 4B   | [`04b_address_review_findings.md`](04b_address_review_findings.md)       | refined ticket and review report                  | resolved findings in the review report   |
 
-## How to read these prompts
-
-They are **starting points for a conversation**, not magic formulas. Where a
-prompt triggers a follow-up question, that is a good sign: the AI is fetching
-context it would otherwise have invented.
-
-The language does not matter — whoever prefers to prompt in German does so. What
-counts are the files handed along and what is expected as a result.
-
-## Dos & don'ts
-
-**Not like this:** "create a Definition of Done" — a bare command delivers
-generic boilerplate.
-
-**Not like this either:** "please …", "could you …" — politeness phrases
-contribute nothing.
-
-**But rather:** "Help us create a Definition of Done. What belongs in it?
-[…] Ask one question at a time." That way the team's knowledge comes out instead
-of the average of the training data.
-
-## When a prompt is typed for the third time
-
-Then it no longer belongs here but becomes a skill and can be called with
-`/skill-name` from then on. Every heading in these files is a candidate for it.
+The artifact naming convention is defined in [@sdlc/README.md](../../README.md).
