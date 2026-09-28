@@ -1,4 +1,9 @@
-import type { CategoryShare, Range, SeriesPoint } from "@/lib/finance";
+import type {
+  CategoryBudget,
+  CategoryShare,
+  Range,
+  SeriesPoint,
+} from "@/lib/finance";
 
 /** Exactly what `GET /api/summary` returns — the contract the cards read. */
 export type DashboardSummary = {
@@ -11,6 +16,7 @@ export type DashboardSummary = {
   net: number;
   series: SeriesPoint[];
   categories: CategoryShare[];
+  budgets: CategoryBudget[]; // calendar month of `asOf`, budgeted categories only
 };
 
 export async function fetchSummary(range: Range): Promise<DashboardSummary> {

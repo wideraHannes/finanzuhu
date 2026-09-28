@@ -49,7 +49,7 @@ export default function DashboardPage() {
       </div>
 
       <div className="grid items-start gap-4 lg:grid-cols-2">
-        <CategoryList data={data} />
+        <CategoryList data={data} showBudgets={range === "month"} />
         <RecentActivity />
       </div>
     </div>
