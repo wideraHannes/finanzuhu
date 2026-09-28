@@ -206,8 +206,6 @@ written.
 - **R-4 — two different month definitions in one card.** The share percentages
   come from a rolling 30-day window, the budget figures from the calendar month.
   Their numbers will not add up if a reader compares them. OQ-1 is the mitigation.
-- **R-5 — ST-002 touches the same component.** `category-list.tsx` is on both
-  stories' path. Order ST-001 → ST-002 as agreed in the story.
 
 ## Open questions before implementation
 
