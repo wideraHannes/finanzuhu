@@ -33,6 +33,16 @@ export type CategoryShare = {
   share: number; // 0..1 of all expenses in the range
 };
 
+export type CategoryBudget = {
+  category: string;
+  budget: number; // planned monthly amount, positive euros
+  actual: number; // positive magnitude of the month's expenses
+  ratio: number; // actual / budget; 0 when nothing is budgeted
+};
+
+/** How a category stands against its budget. Thresholds: 80 % and 100 %. */
+export type BudgetState = "within" | "close" | "over";
+
 export type SeriesPoint = {
   date: string; // ISO day the bucket starts on
   income: number;
@@ -110,6 +120,55 @@ export function byCategory(
       share: all === 0 ? 0 : total / all,
     }))
     .sort((a, b) => b.total - a.total);
+}
+
+/** "2026-09-25" -> "2026-09" — the calendar month a booking belongs to. */
+export function monthKey(iso: string): string {
+  return iso.slice(0, 7);
+}
+
+/**
+ * Plan against actual per budgeted category, for the calendar month of
+ * `reference`.
+ *
+ * One entry per budget key, so a budgeted category without a single booking
+ * still shows up with an actual of 0. Categories that have bookings but no
+ * budget are left out — the plain share list keeps rendering those.
+ *
+ * The ratio is not capped: the UI caps the bar, the number stays honest.
+ */
+export function budgetStatus(
+  transactions: Transaction[],
+  budgets: Record<string, number>,
+  reference: string,
+): CategoryBudget[] {
+  const month = monthKey(reference);
+  const actuals = new Map<string, number>();
+  for (const t of transactions) {
+    if (t.amount >= 0) continue;
+    if (monthKey(t.date) !== month) continue;
+    if (!(t.category in budgets)) continue;
+    actuals.set(t.category, (actuals.get(t.category) ?? 0) - t.amount);
+  }
+
+  return Object.entries(budgets)
+    .map(([category, budget]) => {
+      const actual = actuals.get(category) ?? 0;
+      return {
+        category,
+        budget,
+        actual,
+        ratio: budget > 0 ? actual / budget : 0,
+      };
+    })
+    .sort((a, b) => b.ratio - a.ratio || a.category.localeCompare(b.category));
+}
+
+/** The three states a budget bar can be in. */
+export function budgetState(ratio: number): BudgetState {
+  if (ratio > 1) return "over";
+  if (ratio >= 0.8) return "close";
+  return "within";
 }
 
 /**
