@@ -39,25 +39,10 @@ out again together with the AI and overwritten.
 
 ## Way of working
 
-- **Every session ends with a committed result.** No state stays only inside an
-  AI session.
-- **If a prompt repeats, it becomes a skill** and can be called with
-  `/skill-name` from then on.
-
-## Principles
-
-- **Context beats commands.** Treat the AI like a senior developer who was woken
-  up at 3 am and put in front of an unknown project: skilled, but without any
-  context.
-- **Dialogue instead of one-liners.** Not "create a Definition of Done", but
-  "help us create a DoD — what belongs in it? Ask one question at a time."
-- **Reviews in a fresh session.** Whoever wrote the code is biased toward their
-  own decisions — the AI just as much as a human.
-- **Keep steering documents short.** Everything in `architecture.md` and
-  `code_style.md` costs context in *every* session.
-- **Check manually, by priority.** Steering documents first, then
-  stories/plans/reviews, then tests, then business logic, then the rest.
-- **Tests you have not seen fail are worthless.**
+Ideally, every session ends with a committed result, and a prompt that keeps
+repeating becomes a skill callable with `/skill-name`. Beyond that, teams are
+free to find their own rhythm — the folder structure is the only hard
+constraint.
 
 ## Getting started
 
