@@ -11,6 +11,10 @@ backlog/
   plans/        implementation plans (ST-001_plan.md, ST-001_plan_v2.md)
   reviews/      review reports from the test/release phase
 
+  Each of the four folders above has its own done/ subfolder
+  (e.g. refined/done/), for the artifacts of tickets that fulfil the
+  Definition of Done.
+
 standards/
   definition_of_ready.md    when a story is ready to be implemented
   definition_of_done.md     when an implementation counts as finished
@@ -41,3 +45,13 @@ unrefined/ST-001.md  →  refined/ST-001.md  →  plans/ST-001_plan.md
 
 That way it is visible at a glance where a ticket stands and what it is still
 missing.
+
+## Moving a ticket to `done/`
+
+Once a ticket fulfils every item in `standards/definition_of_done.md`, move
+every one of its files into the `done/` subfolder of the stage folder it is
+currently in (`git mv`, keep the filename): `unrefined/ST-001.md` →
+`unrefined/done/ST-001.md`, `refined/ST-001.md` → `refined/done/ST-001.md`,
+`plans/ST-001_plan.md` → `plans/done/ST-001_plan.md`, and likewise for any
+review report. That way each stage folder keeps its own closed/open split,
+and the ticket's identifier still ties everything together.

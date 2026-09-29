@@ -14,14 +14,17 @@ a codebase that actually runs.
 
 ---
 
+**Finanzuhu is a demo project** — a simple financial advisor app built to demonstrate the SDLC in practice. Its sole and only purpose is to teach
+AI-assisted coding; it is not a real financial product.
+
 ## What this repository is
 
 Two things live here, and keeping them apart is the whole idea:
 
-| | what it is | where |
-| --- | --- | --- |
-| **The process** | the SDLC with AI — its artifacts, standards and prompts. This is what the workshop is about. | [`sdlc/`](sdlc/README.md), [`docs/`](docs/README.md), [`prerequisites/`](prerequisites/README.md) |
-| **The demo project** | **Finanzuhu**, a running personal-finance app. The thing the process is practised *on* — never the point in itself. | `src/`, `data/`, `tests/`, `public/` |
+|                      | what it is                                                                                                          | where                                                                                             |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| **The process**      | the SDLC with AI — its artifacts, standards and prompts. This is what the workshop is about.                        | [`sdlc/`](sdlc/README.md), [`docs/`](docs/README.md), [`prerequisites/`](prerequisites/README.md), [`AGENTS.md`](AGENTS.md), [`.github/`](.github/README.md) |
+| **The demo project** | **Finanzuhu**, a running personal-finance app. The thing the process is practised _on_ — never the point in itself. | `src/`, `data/`, `tests/`, `public/`                                                              |
 
 The app exists so the process has something real to bite into. It runs, it has
 data, it has tests — so a story can be refined, planned, built, reviewed and
@@ -44,48 +47,52 @@ disappearing into a tool. The full reasoning is in
 [`CONCEPT.md`](CONCEPT.md); the folder contract is in
 [`sdlc/README.md`](sdlc/README.md).
 
-## What we do over the next two weeks
+## Guides & Sensors
 
-One story at a time, through the full loop. We start slow — the first pass is
-about understanding each step, not about throughput — and pick up pace once the
-steering documents are in place and the loop feels familiar.
+As the process runs, two kinds of artifacts accumulate around it: things that
+**steer** the AI's work before it happens, and things that **check** it
+afterwards.
 
-**First, the ground rules — once.** One file is deliberately shipped empty:
-[`sdlc/standards/architecture.md`](sdlc/standards/architecture.md). We derive it
-*from the running Finanzuhu code*, together with the AI, before the first
-implementation plan. Definition of Ready and Definition of Done are already in
-the repository — as illustrative material, not as the final word: we work both
-out again and overwrite them.
+- **Guides** — steer the work. Standards, prompts, instructions the AI reads
+  before it acts.
+- **Sensors** — check the work. Linters, tests, reviews that catch problems
+  after the AI has acted.
 
-**Then the loop, per story:**
+Each splits again by how it runs:
 
-1. **Plan** — a raw entry goes into `sdlc/backlog/unrefined/`, deliberately
-   unfinished. We sharpen it against the DoR into `refined/`.
-   → [`prompts/01_plan.md`](sdlc/standards/prompts/01_plan.md)
-2. **Code** — an implementation plan first, reviewed in a fresh session, *then*
-   the code. → [`prompts/02_code.md`](sdlc/standards/prompts/02_code.md)
-3. **Test / Release** — review against the DoD in a separate session, findings
-   assessed by hand, then rework.
-   → [`prompts/03_test_release.md`](sdlc/standards/prompts/03_test_release.md)
-4. **Documentation** — `docs/` and the steering documents brought back in line.
-   → [`prompts/04_documentation.md`](sdlc/standards/prompts/04_documentation.md)
+- **Computational** — deterministic, machine-run, no AI in the loop.
+- **Inferential** — needs judgement, runs through an LLM (a prompt, a skill,
+  an AI review).
 
-**How we work while doing it:**
+|                    | Guides (steer)                                                                                                                                               | Sensors (check)                                                                                                            |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| **Computational**  | _none yet — see ideas below_                                                                                                                                | `npm run lint` ([`eslint.config.mjs`](eslint.config.mjs)) · `npm test` (Vitest)                                              |
+| **Inferential**    | the [6 standard prompts](sdlc/standards/prompts/README.md) · [`definition_of_ready.md`](sdlc/standards/definition_of_ready.md) · [`definition_of_done.md`](sdlc/standards/definition_of_done.md) · `architecture.md` (empty, to be derived) | [`04a_review_implementation.md`](sdlc/standards/prompts/04a_review_implementation.md) (AI review against the DoD)            |
 
-- Every session ends with a **committed result**. No state stays only inside an
-  AI session.
-- Reviews run in a **fresh session** — whoever wrote the code is biased toward
-  their own decisions, the AI as much as a human.
-- When a prompt gets typed a third time, it becomes a **skill** and is called
-  with `/skill-name` from then on.
+The cell that's empty today, and anything else we think of along the way,
+goes into
+[`sdlc/harness-improvement-ideas/`](sdlc/harness-improvement-ideas/README.md)
+until it's actually built. [`.github/`](.github/README.md) is the skeleton
+for the GitHub Copilot / VS Code side of Guides — project instructions,
+scoped instructions, skills — ready to fill in as those ideas land.
+
+## Intended use of project
+
+One story at a time, through the full loop: unrefined → refined → plan → code
+→ review → docs. `sdlc/standards/architecture.md` is deliberately shipped
+empty and derived from the running code first; Definition of Ready and
+Definition of Done are illustrative starting points, not the final word.
+
+**Ground rules while doing it:**
+
+- Every session ends with a **committed result**.
+- Reviews run in a **fresh session**.
+- A prompt typed a third time becomes a **skill**.
 - **Tests you have not seen fail are worthless.**
-
-The cadence is not fixed in advance. What is fixed is the order of the steps and
-the artifact each one leaves behind.
 
 ## The demo project: Finanzuhu
 
-*The uhu is an eagle owl — the friendly Finanzguru relative.* It needs nothing
+_The uhu is an eagle owl — the friendly Finanzguru relative._ It needs nothing
 but Node:
 
 ```bash
@@ -94,7 +101,7 @@ npm run dev     # http://localhost:3000
 npm test        # the two example tests on the money math
 ```
 
-Two screens. **Overview** (`/`) answers *how much money do we have*: balance,
+Two screens. **Overview** (`/`) answers _how much money do we have_: balance,
 free-to-spend, a cashflow chart over week / month / three months, in-out-net
 tiles, the top categories and the last eight bookings. **Transactions**
 (`/transactions`) is the full ledger — searchable, filterable by category and
@@ -123,11 +130,11 @@ import via upload, multi-account, a tagging/rules engine.
 <details>
 <summary><strong>Brand assets</strong></summary>
 
-| asset | where it is used |
-| --- | --- |
-| [`assets/logo_finanzuhu.jpeg`](assets/logo_finanzuhu.jpeg) | the source artwork — everything below is cut from it |
-| `public/finanzuhu-logo.png` | full lockup, trimmed — the app header (`src/components/layout/brand.tsx`), README, Open Graph |
-| `src/app/favicon.ico`, `icon.png`, `apple-icon.png` | the owl alone — browser tab and home screen |
+| asset                                                      | where it is used                                                                              |
+| ---------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| [`assets/logo_finanzuhu.jpeg`](assets/logo_finanzuhu.jpeg) | the source artwork — everything below is cut from it                                          |
+| `public/finanzuhu-logo.png`                                | full lockup, trimmed — the app header (`src/components/layout/brand.tsx`), README, Open Graph |
+| `src/app/favicon.ico`, `icon.png`, `apple-icon.png`        | the owl alone — browser tab and home screen                                                   |
 
 The two brand colours live in [`src/app/globals.css`](src/app/globals.css) as
 `--owl` (the violet) and `--owl-accent` (the teal); charts, focus rings and the
@@ -135,32 +142,16 @@ active navigation item all derive from them, in both themes.
 
 </details>
 
-## Layout
-
-```
-sdlc/            the process — backlog artifacts, standards, prompts
-docs/            architecture documentation, diagrams, decisions
-prerequisites/   background material: the SDLC refresher and the slides
-─────────────────────────────────────────────────────────────────────
-src/             the Finanzuhu app — app router, features, lib
-data/            the committed ledger the app reads
-tests/           test code and test data
-public/          brand assets served by the app
-scripts/         check-data.mjs, verifies the ledger
-assets/          logo and workshop imagery
-```
-
-Every folder explains itself in its own `README.md`.
-
 ## Where to start
 
-| I want to… | |
-| --- | --- |
-| understand how we work here | [`CONCEPT.md`](CONCEPT.md) |
-| know what goes in which folder | [`sdlc/README.md`](sdlc/README.md) |
-| get the prompt for a step | [`sdlc/standards/prompts/`](sdlc/standards/prompts/README.md) |
-| refresh the SDLC material | [`prerequisites/`](prerequisites/README.md) |
-| look at the app | `npm install && npm run dev` |
+| I want to…                     |                                                               |
+| ------------------------------ | ------------------------------------------------------------- |
+| understand how we work here    | [`CONCEPT.md`](CONCEPT.md)                                    |
+| know what goes in which folder | [`sdlc/README.md`](sdlc/README.md)                            |
+| see what Guides & Sensors exist | [`#guides--sensors`](#guides--sensors) above, ideas in [`sdlc/harness-improvement-ideas/`](sdlc/harness-improvement-ideas/README.md) |
+| get the prompt for a step      | [`sdlc/standards/prompts/`](sdlc/standards/prompts/README.md) |
+| refresh the SDLC material      | [`prerequisites/`](prerequisites/README.md)                   |
+| look at the app                | `npm install && npm run dev`                                  |
 
 ---
 
