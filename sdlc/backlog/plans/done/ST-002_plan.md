@@ -1,8 +1,8 @@
 # ST-002 — Implementation plan: LLM assistant for transactions and general questions
 
-**Story:** [`refined/ST-002.md`](../refined/ST-002.md)
-**Standards:** [`architecture.md`](../../standards/architecture.md) ·
-[`definition_of_done.md`](../../standards/definition_of_done.md)
+**Story:** [`refined/ST-002.md`](../../refined/done/ST-002.md)
+**Standards:** [`architecture.md`](../../../standards/architecture.md) ·
+[`definition_of_done.md`](../../../standards/definition_of_done.md)
 
 ## Approach
 

@@ -1,9 +1,9 @@
 # ST-002 — Implementation review
 
-**Story:** [`refined/ST-002.md`](../refined/ST-002.md)
-**Plan:** [`plans/ST-002_plan.md`](../plans/ST-002_plan.md)
-**Standards:** [`architecture.md`](../../standards/architecture.md) ·
-[`definition_of_done.md`](../../standards/definition_of_done.md)
+**Story:** [`refined/ST-002.md`](../../refined/done/ST-002.md)
+**Plan:** [`plans/ST-002_plan.md`](../../plans/done/ST-002_plan.md)
+**Standards:** [`architecture.md`](../../../standards/architecture.md) ·
+[`definition_of_done.md`](../../../standards/definition_of_done.md)
 **Reviewed:** 2026-09-30, working tree on branch `session_3` (uncommitted)
 
 ## Verdict
