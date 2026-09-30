@@ -101,11 +101,24 @@ npm run dev     # http://localhost:3000
 npm test        # the two example tests on the money math
 ```
 
-Two screens. **Overview** (`/`) answers _how much money do we have_: balance,
+Three screens. **Overview** (`/`) answers _how much money do we have_: balance,
 free-to-spend, a cashflow chart over week / month / three months, in-out-net
 tiles, the top categories and the last eight bookings. **Transactions**
 (`/transactions`) is the full ledger — searchable, filterable by category and
-direction, sortable by date and amount.
+direction, sortable by date and amount. **Assistant** (`/assistant`) is a chat
+that answers questions about the bookings (via a `search_transactions` tool)
+and general questions, using an LLM through the Requesty gateway.
+
+The assistant needs a local, uncommitted `.env`:
+
+```bash
+REQUESTY_API_KEY=...
+REQUESTY_BASE_URL=...
+REQUESTY_MODEL=...   # optional, default azure/gpt-6-luna@germanywestcentral
+```
+
+Without it the rest of the app works; the chat shows "The assistant is not
+configured."
 
 **The stack:** Next.js 15 (App Router, TypeScript strict), Tailwind CSS v4,
 shadcn/ui, TanStack Query v5, Recharts, Vitest. Deliberately absent: validation
