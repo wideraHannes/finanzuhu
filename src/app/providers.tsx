@@ -3,8 +3,10 @@
 import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+import { ChatProvider } from "@/features/assistant/chat-context";
+
 /**
- * The one client-side provider this app needs.
+ * The client-side providers this app needs.
  *
  * `staleTime: Infinity` because the ledger is a fixed file: once a range has
  * been fetched it never changes, so switching tabs back and forth is instant
@@ -20,5 +22,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
       }),
   );
 
-  return <QueryClientProvider client={client}>{children}</QueryClientProvider>;
+  return (
+    <QueryClientProvider client={client}>
+      <ChatProvider>{children}</ChatProvider>
+    </QueryClientProvider>
+  );
 }
