@@ -59,7 +59,7 @@ the part that cannot be prepared: the team's own standards.
    Deliberately unfinished: they are the input for the first step. The features
    Finanzuhu is missing on purpose are listed in the
    [README](README.md#the-demo-project-finanzuhu).
-3. **Start** with [`sdlc/standards/prompts/01_plan.md`](sdlc/standards/prompts/01_plan.md)
+3. **Start** with [`sdlc/standards/prompts/01_refine_story.md`](sdlc/standards/prompts/01_refine_story.md)
    and take one story through the full loop.
 
 Start slow — the first pass is about understanding each step, not about

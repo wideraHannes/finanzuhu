@@ -14,6 +14,3 @@ This is where the following belongs:
 
 Short and binding, by contrast, is `sdlc/standards/architecture.md`: the file the
 agent reads on every implementation.
-
-The standard prompt for this step:
-[`../sdlc/standards/prompts/04_documentation.md`](../sdlc/standards/prompts/04_documentation.md)

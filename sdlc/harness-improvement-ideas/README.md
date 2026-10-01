@@ -17,3 +17,7 @@ and why it would help.
 - **Review-prompt checklist tied to `definition_of_done.md`** — Sensor,
   Inferential. Makes `04a_review_implementation.md` explicitly walk every DoD
   item instead of relying on the reviewer to remember them.
+
+Concrete Copilot / VS Code proposals (hooks, agents, skills, scripts) with
+examples and a suggested order:
+[`copilot-customization.md`](copilot-customization.md).
