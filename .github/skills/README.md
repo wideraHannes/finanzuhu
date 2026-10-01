@@ -1,23 +1,13 @@
 # Skills
 
-Empty for now. Each skill is its own folder with a `SKILL.md`:
+One folder per SDLC step, each with a standalone `SKILL.md`.
 
-```
-skills/
-  refine-ticket/
-    SKILL.md
-```
+| Skill                           | Step                    | Output                                  |
+| ------------------------------- | ----------------------- | --------------------------------------- |
+| `/refine-ticket ST-XXX`         | refine a raw ticket     | `sdlc/backlog/refined/ST-XXX.md`        |
+| `/plan-ticket ST-XXX`           | create a plan           | `sdlc/backlog/plans/ST-XXX_plan.md`     |
+| `/implement-ticket ST-XXX`      | implement plan          | code and tests                          |
+| `/review-implementation ST-XXX` | review implementation   | `sdlc/backlog/reviews/ST-XXX_review.md` |
 
-```markdown
----
-name: refine-ticket
-description: Wraps 01_refine_story.md — use when refining a raw backlog ticket.
----
-
-<the prompt, filled in with @-references>
-```
-
-First candidate: turning the
-[6 standard SDLC prompts](../../sdlc/standards/prompts/README.md) into
-skills, starting with `refine-ticket` — tracked in
-[harness-improvement-ideas](../../sdlc/harness-improvement-ideas/README.md).
+- `disable-model-invocation: true` — a step runs only when a human calls it.
+- `review-implementation` uses `context: fork`, so the review runs in a fresh context.
