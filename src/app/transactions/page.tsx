@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Search } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -16,11 +16,16 @@ import {
 } from "@/components/ui/select";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TransactionTable } from "@/features/transactions/transaction-table";
+import { TransactionForm } from "@/features/transactions/transaction-form";
 import {
+  createTransaction,
   fetchTransactions,
   NO_FILTERS,
+  removeTransaction,
+  resetTransactions,
   type TransactionFilters,
 } from "@/features/transactions/transactions";
+import type { Transaction } from "@/lib/finance";
 
 const ALL = "all"; // Radix needs a non-empty value; "" is our "no filter".
 
@@ -33,6 +38,7 @@ const TYPES: { value: TransactionFilters["type"]; label: string }[] = [
 export default function TransactionsPage() {
   const [search, setSearch] = useState("");
   const [filters, setFilters] = useState<TransactionFilters>(NO_FILTERS);
+  const queryClient = useQueryClient();
 
   // The input stays instant; the query follows 200 ms later.
   useEffect(() => {
@@ -50,6 +56,38 @@ export default function TransactionsPage() {
 
   const filtered = Boolean(filters.q || filters.category || filters.type);
 
+  function refreshLedger() {
+    return Promise.all(
+      ["transactions", "summary", "spending"].map((key) =>
+        queryClient.invalidateQueries({ queryKey: [key] }),
+      ),
+    );
+  }
+  const createMutation = useMutation({
+    mutationFn: createTransaction,
+    onSuccess: refreshLedger,
+  });
+  const removeMutation = useMutation({
+    mutationFn: removeTransaction,
+    onSuccess: refreshLedger,
+  });
+  const resetMutation = useMutation({
+    mutationFn: resetTransactions,
+    onSuccess: refreshLedger,
+  });
+
+  function remove(transaction: Transaction) {
+    removeMutation.mutate(transaction.id);
+  }
+  function reset() {
+    if (
+      window.confirm(
+        "Restore the default transactions? All additions and removals will be lost.",
+      )
+    )
+      resetMutation.mutate();
+  }
+
   function clearFilters() {
     setSearch("");
     setFilters(NO_FILTERS);
@@ -66,6 +104,32 @@ export default function TransactionsPage() {
               ? `${data.items.length} of ${data.total} bookings`
               : `${data.total} bookings`}
         </p>
+      </div>
+
+      <TransactionForm
+        onCreate={(input) => createMutation.mutateAsync(input)}
+        isPending={createMutation.isPending}
+        error={createMutation.error?.message}
+      />
+
+      <div className="flex items-center justify-between gap-3">
+        <p className="text-sm text-muted-foreground">
+          Restore the original demo ledger at any time.
+        </p>
+        <div className="text-right">
+          <Button
+            variant="outline"
+            onClick={reset}
+            disabled={resetMutation.isPending}
+          >
+            {resetMutation.isPending ? "Resetting…" : "Reset transactions"}
+          </Button>
+          {resetMutation.error && (
+            <p className="mt-1 text-sm text-destructive" role="alert">
+              {resetMutation.error.message}
+            </p>
+          )}
+        </div>
       </div>
 
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
@@ -110,9 +174,7 @@ export default function TransactionsPage() {
           onValueChange={(value) =>
             setFilters((current) => ({
               ...current,
-              type: (value === ALL
-                ? ""
-                : value) as TransactionFilters["type"],
+              type: (value === ALL ? "" : value) as TransactionFilters["type"],
             }))
           }
         >
@@ -141,6 +203,10 @@ export default function TransactionsPage() {
           ) : (
             <TransactionTable
               transactions={data?.items}
+              onRemove={remove}
+              removingId={
+                removeMutation.isPending ? removeMutation.variables : undefined
+              }
               empty={
                 <div className="space-y-3">
                   <p className="text-sm text-muted-foreground">

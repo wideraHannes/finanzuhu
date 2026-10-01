@@ -13,6 +13,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { formatShortDate, formatSignedEUR } from "@/lib/format";
 import type { Transaction } from "@/lib/finance";
@@ -69,9 +70,13 @@ function ariaSort(column: SortColumn, sort: Sort) {
 export function TransactionTable({
   transactions,
   empty,
+  onRemove,
+  removingId,
 }: {
   transactions?: Transaction[];
   empty: React.ReactNode;
+  onRemove: (transaction: Transaction) => void;
+  removingId?: string;
 }) {
   const [sort, setSort] = useState<Sort>({ column: "date", descending: true });
 
@@ -100,13 +105,19 @@ export function TransactionTable({
           <TableHead>Description</TableHead>
           <TableHead className={NARROW}>Category</TableHead>
           <TableHead className={NARROW}>Method</TableHead>
-          <TableHead className="text-right" aria-sort={ariaSort("amount", sort)}>
+          <TableHead
+            className="text-right"
+            aria-sort={ariaSort("amount", sort)}
+          >
             <SortButton
               column="amount"
               label="Amount"
               sort={sort}
               onSortChange={setSort}
             />
+          </TableHead>
+          <TableHead>
+            <span className="sr-only">Actions</span>
           </TableHead>
         </TableRow>
       </TableHeader>
@@ -115,14 +126,14 @@ export function TransactionTable({
         {!rows ? (
           Array.from({ length: 10 }, (_, i) => (
             <TableRow key={i}>
-              <TableCell colSpan={5}>
+              <TableCell colSpan={6}>
                 <Skeleton className="h-8 w-full" />
               </TableCell>
             </TableRow>
           ))
         ) : rows.length === 0 ? (
           <TableRow className="hover:bg-transparent">
-            <TableCell colSpan={5} className="py-10 text-center">
+            <TableCell colSpan={6} className="py-10 text-center">
               {empty}
             </TableCell>
           </TableRow>
@@ -151,6 +162,16 @@ export function TransactionTable({
                 )}
               >
                 {formatSignedEUR(transaction.amount)}
+              </TableCell>
+              <TableCell className="text-right">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => onRemove(transaction)}
+                  disabled={removingId === transaction.id}
+                >
+                  {removingId === transaction.id ? "Removing…" : "Remove"}
+                </Button>
               </TableCell>
             </TableRow>
           ))

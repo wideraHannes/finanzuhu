@@ -33,6 +33,16 @@ export type CategoryShare = {
   share: number; // 0..1 of all expenses in the range
 };
 
+export type SpendingBucket = {
+  label: string; // category name or YYYY-MM
+  total: number; // positive expense magnitude
+};
+
+export type SpendingOverview = {
+  categories: SpendingBucket[];
+  months: SpendingBucket[];
+};
+
 export type CategoryBudget = {
   category: string;
   budget: number; // planned monthly amount, positive euros
@@ -125,6 +135,43 @@ export function byCategory(
 /** "2026-09-25" -> "2026-09" — the calendar month a booking belongs to. */
 export function monthKey(iso: string): string {
   return iso.slice(0, 7);
+}
+
+/** Historical spending, grouped by category and calendar month. */
+export function spendingOverview(
+  transactions: Transaction[],
+  from: string,
+  to: string,
+): SpendingOverview {
+  const categories = new Map<string, number>();
+  const months = new Map<string, number>();
+
+  for (const transaction of transactions) {
+    if (
+      transaction.amount >= 0 ||
+      transaction.date < from ||
+      transaction.date > to
+    ) {
+      continue;
+    }
+
+    const amount = -transaction.amount;
+    categories.set(
+      transaction.category,
+      (categories.get(transaction.category) ?? 0) + amount,
+    );
+    const month = monthKey(transaction.date);
+    months.set(month, (months.get(month) ?? 0) + amount);
+  }
+
+  return {
+    categories: [...categories]
+      .map(([label, total]) => ({ label, total }))
+      .sort((a, b) => b.total - a.total || a.label.localeCompare(b.label)),
+    months: [...months]
+      .map(([label, total]) => ({ label, total }))
+      .sort((a, b) => a.label.localeCompare(b.label)),
+  };
 }
 
 /**
