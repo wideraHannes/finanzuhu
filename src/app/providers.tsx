@@ -8,16 +8,19 @@ import { ChatProvider } from "@/features/assistant/chat-context";
 /**
  * The client-side providers this app needs.
  *
- * `staleTime: Infinity` because the ledger is a fixed file: once a range has
- * been fetched it never changes, so switching tabs back and forth is instant
- * and never refetches.
+ * Ledger mutations explicitly invalidate their affected query families, so
+ * switching views stays instant between successful writes.
  */
 export function Providers({ children }: { children: React.ReactNode }) {
   const [client] = useState(
     () =>
       new QueryClient({
         defaultOptions: {
-          queries: { staleTime: Infinity, refetchOnWindowFocus: false, retry: 1 },
+          queries: {
+            staleTime: Infinity,
+            refetchOnWindowFocus: false,
+            retry: 1,
+          },
         },
       }),
   );
