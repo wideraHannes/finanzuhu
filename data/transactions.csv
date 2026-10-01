@@ -1,0 +1,132 @@
+id,date,amount,description,counterparty,category,type,method,recurring
+tx_0001,2026-07-01,-800.00,Rent July,Hausverwaltung Meyer,Rent,expense,direct_debit,true
+tx_0002,2026-07-01,-58.00,Public transport pass July,HVV Hamburg,Mobility,expense,direct_debit,true
+tx_0003,2026-07-01,-4.90,Account maintenance fee July,Hamburger Sparkasse,Bank Fees,expense,fee,true
+tx_0004,2026-07-01,-84.51,Dentist,Zahnarztpraxis Dr. Krüger,Health & Pharmacy,expense,card,false
+tx_0005,2026-07-02,-21.40,Liability and household insurance July,HUK-COBURG,Insurance,expense,direct_debit,true
+tx_0006,2026-07-02,-300.00,Savings standing order July,Tagesgeldkonto,Savings,expense,transfer,true
+tx_0007,2026-07-03,-34.90,Gym membership July,FitnessFirst Hamburg,Subscriptions,expense,direct_debit,true
+tx_0008,2026-07-03,-44.65,Groceries,Bio Company,Groceries,expense,card,false
+tx_0009,2026-07-03,-80.24,Refuelling,TotalEnergies,Fuel,expense,card,false
+tx_0010,2026-07-03,-2.44,Single ticket,HVV Ticketautomat,Mobility,expense,card,false
+tx_0011,2026-07-03,-17.64,Online course,Udemy,Education,expense,card,false
+tx_0012,2026-07-04,-78.00,Electricity July,Stadtwerke Hamburg,Utilities,expense,direct_debit,true
+tx_0013,2026-07-04,-46.33,Groceries,ALDI SÜD,Groceries,expense,card,false
+tx_0014,2026-07-04,-6.09,Bakery,Bäckerei Junge,Restaurants & Cafés,expense,card,false
+tx_0015,2026-07-05,-44.50,Internet July,Telekom Deutschland,Internet & Phone,expense,direct_debit,true
+tx_0016,2026-07-05,-29.99,Mobile contract July,Vodafone,Internet & Phone,expense,direct_debit,true
+tx_0017,2026-07-07,-24.37,Dinner,Sushi Kaito,Restaurants & Cafés,expense,card,false
+tx_0018,2026-07-08,-13.99,Netflix July,Netflix International,Subscriptions,expense,card,true
+tx_0019,2026-07-08,-35.15,Groceries,ALDI SÜD,Groceries,expense,card,false
+tx_0020,2026-07-10,-14.36,Groceries,REWE,Groceries,expense,card,false
+tx_0021,2026-07-10,-8.38,Bakery,Bäckerei Junge,Restaurants & Cafés,expense,card,false
+tx_0022,2026-07-10,-97.34,Online order,Zalando,Shopping & Clothing,expense,card,false
+tx_0023,2026-07-11,-13.31,Groceries,Lidl,Groceries,expense,card,false
+tx_0024,2026-07-12,-11.99,Spotify July,Spotify AB,Subscriptions,expense,card,true
+tx_0025,2026-07-12,-25.66,Eating out,Vapiano,Restaurants & Cafés,expense,card,false
+tx_0026,2026-07-14,-35.32,Drugstore,Rossmann,Household,expense,card,false
+tx_0027,2026-07-15,-2.99,iCloud storage July,Apple Services,Subscriptions,expense,card,true
+tx_0028,2026-07-16,-72.79,Refuelling,Shell,Fuel,expense,card,false
+tx_0029,2026-07-17,-31.48,Groceries,ALDI SÜD,Groceries,expense,card,false
+tx_0030,2026-07-17,-100.00,Cash withdrawal,Hamburger Sparkasse,Cash Withdrawal,expense,atm,false
+tx_0031,2026-07-18,-4.50,Bakery,Bäckerei Junge,Restaurants & Cafés,expense,card,false
+tx_0032,2026-07-19,-159.00,Desk and shelving,IKEA Hamburg-Moorfleet,Household,expense,card,false
+tx_0033,2026-07-19,-15.66,Eating out,Burger Base,Restaurants & Cafés,expense,card,false
+tx_0034,2026-07-22,-10.41,Cinema,Cinemaxx Dammtor,Leisure & Culture,expense,card,false
+tx_0035,2026-07-23,-19.72,Groceries,ALDI SÜD,Groceries,expense,card,false
+tx_0036,2026-07-24,-38.25,Groceries,Penny,Groceries,expense,card,false
+tx_0037,2026-07-24,-43.08,Dentist,Zahnarztpraxis Dr. Krüger,Health & Pharmacy,expense,card,false
+tx_0038,2026-07-24,-40.03,Donation,Ärzte ohne Grenzen,Gifts & Donations,expense,card,false
+tx_0039,2026-07-25,3000.00,Salary July,ForrestAnimals AG,Salary,income,transfer,true
+tx_0040,2026-07-25,-9.40,Groceries,Lidl,Groceries,expense,card,false
+tx_0041,2026-07-26,-52.73,Dinner,Trattoria da Vinci,Restaurants & Cafés,expense,card,false
+tx_0042,2026-07-28,-72.02,Refuelling,TotalEnergies,Fuel,expense,card,false
+tx_0043,2026-07-31,-33.25,Dinner,Trattoria da Vinci,Restaurants & Cafés,expense,card,false
+tx_0044,2026-07-31,-30.63,Drinks,Bar Rossi,Bars & Nightlife,expense,card,false
+tx_0045,2026-08-01,-800.00,Rent August,Hausverwaltung Meyer,Rent,expense,direct_debit,true
+tx_0046,2026-08-01,-58.00,Public transport pass August,HVV Hamburg,Mobility,expense,direct_debit,true
+tx_0047,2026-08-01,-4.90,Account maintenance fee August,Hamburger Sparkasse,Bank Fees,expense,fee,true
+tx_0048,2026-08-01,-33.73,Night out,Clubhaus St. Pauli,Bars & Nightlife,expense,card,false
+tx_0049,2026-08-02,-21.40,Liability and household insurance August,HUK-COBURG,Insurance,expense,direct_debit,true
+tx_0050,2026-08-02,-300.00,Savings standing order August,Tagesgeldkonto,Savings,expense,transfer,true
+tx_0051,2026-08-02,-84.00,Train tickets Hamburg - Binz,DB Fernverkehr,Travel,expense,card,false
+tx_0052,2026-08-02,-152.00,Apartment Binz 4 nights,Ostsee Ferienwohnungen,Travel,expense,transfer,false
+tx_0053,2026-08-02,-39.43,Dinner,Sushi Kaito,Restaurants & Cafés,expense,card,false
+tx_0054,2026-08-03,-34.90,Gym membership August,FitnessFirst Hamburg,Subscriptions,expense,direct_debit,true
+tx_0055,2026-08-03,-49.47,Course subscription,Coursera,Education,expense,card,false
+tx_0056,2026-08-04,-78.00,Electricity August,Stadtwerke Hamburg,Utilities,expense,direct_debit,true
+tx_0057,2026-08-05,-44.50,Internet August,Telekom Deutschland,Internet & Phone,expense,direct_debit,true
+tx_0058,2026-08-05,-29.99,Mobile contract August,Vodafone,Internet & Phone,expense,direct_debit,true
+tx_0059,2026-08-05,-31.84,Train ticket,DB Vertrieb,Mobility,expense,card,false
+tx_0060,2026-08-07,-38.50,Dinner at the pier,Strandrestaurant Seebrücke,Restaurants & Cafés,expense,card,false
+tx_0061,2026-08-08,-13.99,Netflix August,Netflix International,Subscriptions,expense,card,true
+tx_0062,2026-08-08,-24.00,Bike rental,Radverleih Binz,Mobility,expense,card,false
+tx_0063,2026-08-09,-18.00,Chalk cliffs park entry,Nationalpark Jasmund,Leisure & Culture,expense,card,false
+tx_0064,2026-08-10,-29.40,Groceries for the flat,EDEKA Binz,Groceries,expense,card,false
+tx_0065,2026-08-11,-12.60,Bus to the station,Rügener Personennahverkehr,Mobility,expense,card,false
+tx_0066,2026-08-12,-11.99,Spotify August,Spotify AB,Subscriptions,expense,card,true
+tx_0067,2026-08-12,-75.00,Refuelling,Shell,Fuel,expense,card,false
+tx_0068,2026-08-15,-2.99,iCloud storage August,Apple Services,Subscriptions,expense,card,true
+tx_0069,2026-08-15,-22.77,Groceries,Bio Company,Groceries,expense,card,false
+tx_0070,2026-08-16,-36.77,Groceries,ALDI SÜD,Groceries,expense,card,false
+tx_0071,2026-08-16,-15.59,Eating out,Vapiano,Restaurants & Cafés,expense,card,false
+tx_0072,2026-08-18,-8.73,Bakery,Bäckerei Junge,Restaurants & Cafés,expense,card,false
+tx_0073,2026-08-19,-9.80,Groceries,Lidl,Groceries,expense,card,false
+tx_0074,2026-08-21,-43.00,Groceries,ALDI SÜD,Groceries,expense,card,false
+tx_0075,2026-08-21,-18.82,Drinks,Bar Rossi,Bars & Nightlife,expense,card,false
+tx_0076,2026-08-21,-31.59,Pharmacy,Apotheke am Markt,Health & Pharmacy,expense,card,false
+tx_0077,2026-08-21,-13.26,Cinema,Cinemaxx Dammtor,Leisure & Culture,expense,card,false
+tx_0078,2026-08-22,-33.21,Groceries,ALDI SÜD,Groceries,expense,card,false
+tx_0079,2026-08-22,-10.87,Ride,FREE NOW,Mobility,expense,card,false
+tx_0080,2026-08-22,-65.22,Hardware store,OBI Baumarkt,Household,expense,card,false
+tx_0081,2026-08-22,-48.85,Donation,Ärzte ohne Grenzen,Gifts & Donations,expense,card,false
+tx_0082,2026-08-23,-38.57,Dinner,Sushi Kaito,Restaurants & Cafés,expense,card,false
+tx_0083,2026-08-23,-67.13,Refuelling,Shell,Fuel,expense,card,false
+tx_0084,2026-08-24,-33.83,Groceries,Bio Company,Groceries,expense,card,false
+tx_0085,2026-08-24,-30.76,Train ticket,DB Vertrieb,Mobility,expense,card,false
+tx_0086,2026-08-24,-40.76,Clothing,Uniqlo,Shopping & Clothing,expense,card,false
+tx_0087,2026-08-25,3000.00,Salary August,ForrestAnimals AG,Salary,income,transfer,true
+tx_0088,2026-08-27,-44.87,Night out,Clubhaus St. Pauli,Bars & Nightlife,expense,card,false
+tx_0089,2026-08-28,-11.51,Groceries,Lidl,Groceries,expense,card,false
+tx_0090,2026-08-29,-5.61,Bakery,Bäckerei Junge,Restaurants & Cafés,expense,card,false
+tx_0091,2026-08-30,-50.00,Cash withdrawal,Hamburger Sparkasse,Cash Withdrawal,expense,atm,false
+tx_0092,2026-08-31,-28.50,Train ticket,DB Vertrieb,Mobility,expense,card,false
+tx_0093,2026-09-01,-800.00,Rent September,Hausverwaltung Meyer,Rent,expense,direct_debit,true
+tx_0094,2026-09-01,-58.00,Public transport pass September,HVV Hamburg,Mobility,expense,direct_debit,true
+tx_0095,2026-09-01,-4.90,Account maintenance fee September,Hamburger Sparkasse,Bank Fees,expense,fee,true
+tx_0096,2026-09-02,-21.40,Liability and household insurance September,HUK-COBURG,Insurance,expense,direct_debit,true
+tx_0097,2026-09-02,-300.00,Savings standing order September,Tagesgeldkonto,Savings,expense,transfer,true
+tx_0098,2026-09-02,-23.19,Pharmacy,Apotheke am Markt,Health & Pharmacy,expense,card,false
+tx_0099,2026-09-03,-34.90,Gym membership September,FitnessFirst Hamburg,Subscriptions,expense,direct_debit,true
+tx_0100,2026-09-04,-78.00,Electricity September,Stadtwerke Hamburg,Utilities,expense,direct_debit,true
+tx_0101,2026-09-04,-27.09,Groceries,Penny,Groceries,expense,card,false
+tx_0102,2026-09-05,-44.50,Internet September,Telekom Deutschland,Internet & Phone,expense,direct_debit,true
+tx_0103,2026-09-05,-29.99,Mobile contract September,Vodafone,Internet & Phone,expense,direct_debit,true
+tx_0104,2026-09-05,-33.25,Groceries,Penny,Groceries,expense,card,false
+tx_0105,2026-09-05,-51.42,Course subscription,Coursera,Education,expense,card,false
+tx_0106,2026-09-06,-53.41,Dinner,Trattoria da Vinci,Restaurants & Cafés,expense,card,false
+tx_0107,2026-09-08,341.80,Tax assessment 2025,Finanzamt Hamburg-Nord,Other Income,income,transfer,false
+tx_0108,2026-09-08,-13.99,Netflix September,Netflix International,Subscriptions,expense,card,true
+tx_0109,2026-09-08,-51.12,Groceries,Bio Company,Groceries,expense,card,false
+tx_0110,2026-09-08,-33.29,Drinks,Zum Anker,Bars & Nightlife,expense,card,false
+tx_0111,2026-09-08,-32.52,Train ticket,DB Vertrieb,Mobility,expense,card,false
+tx_0112,2026-09-08,-50.00,Cash withdrawal,Hamburger Sparkasse,Cash Withdrawal,expense,atm,false
+tx_0113,2026-09-09,-38.42,Groceries,ALDI SÜD,Groceries,expense,card,false
+tx_0114,2026-09-11,-83.79,Refuelling,Aral,Fuel,expense,card,false
+tx_0115,2026-09-12,-11.99,Spotify September,Spotify AB,Subscriptions,expense,card,true
+tx_0116,2026-09-12,-289.90,Autumn wardrobe,Zara,Shopping & Clothing,expense,card,false
+tx_0117,2026-09-12,-12.07,Bakery,Bäckerei Junge,Restaurants & Cafés,expense,card,false
+tx_0118,2026-09-12,-27.87,Museum,Kunsthalle Hamburg,Leisure & Culture,expense,card,false
+tx_0119,2026-09-15,-2.99,iCloud storage September,Apple Services,Subscriptions,expense,card,true
+tx_0120,2026-09-16,-58.63,Clothing,H&M,Shopping & Clothing,expense,card,false
+tx_0121,2026-09-18,-36.03,Groceries,Lidl,Groceries,expense,card,false
+tx_0122,2026-09-19,-63.37,Groceries,EDEKA Struve,Groceries,expense,card,false
+tx_0123,2026-09-19,-24.87,Night out,Clubhaus St. Pauli,Bars & Nightlife,expense,card,false
+tx_0124,2026-09-19,-3.12,Single ticket,HVV Ticketautomat,Mobility,expense,card,false
+tx_0125,2026-09-20,-15.83,Drugstore,dm-drogerie markt,Household,expense,card,false
+tx_0126,2026-09-21,45.00,Concert tickets paid back,Jonas Brinkmann,Other Income,income,transfer,false
+tx_0127,2026-09-21,-25.31,Ride,FREE NOW,Mobility,expense,card,false
+tx_0128,2026-09-22,-82.87,Refuelling,TotalEnergies,Fuel,expense,card,false
+tx_0129,2026-09-24,-59.27,Gift,Manufactum,Gifts & Donations,expense,card,false
+tx_0130,2026-09-25,3000.00,Salary September,ForrestAnimals AG,Salary,income,transfer,true
+tx_0131,2026-09-25,-44.60,Train ticket,DB Vertrieb,Mobility,expense,card,false
