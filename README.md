@@ -21,10 +21,10 @@ AI-assisted coding; it is not a real financial product.
 
 Two things live here, and keeping them apart is the whole idea:
 
-|                      | what it is                                                                                                          | where                                                                                             |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+|                      | what it is                                                                                                          | where                                                                                                                                                        |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **The process**      | the SDLC with AI — its artifacts, standards and prompts. This is what the workshop is about.                        | [`sdlc/`](sdlc/README.md), [`docs/`](docs/README.md), [`prerequisites/`](prerequisites/README.md), [`AGENTS.md`](AGENTS.md), [`.github/`](.github/README.md) |
-| **The demo project** | **Finanzuhu**, a running personal-finance app. The thing the process is practised _on_ — never the point in itself. | `src/`, `data/`, `tests/`, `public/`                                                              |
+| **The demo project** | **Finanzuhu**, a running personal-finance app. The thing the process is practised _on_ — never the point in itself. | `src/`, `data/`, `tests/`, `public/`                                                                                                                         |
 
 The app exists so the process has something real to bite into. It runs, it has
 data, it has tests — so a story can be refined, planned, built, reviewed and
@@ -64,10 +64,10 @@ Each splits again by how it runs:
 - **Inferential** — needs judgement, runs through an LLM (a prompt, a skill,
   an AI review).
 
-|                    | Guides (steer)                                                                                                                                               | Sensors (check)                                                                                                            |
-| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| **Computational**  | _none yet — see ideas below_                                                                                                                                | `npm run lint` ([`eslint.config.mjs`](eslint.config.mjs)) · `npm test` (Vitest)                                              |
-| **Inferential**    | the [6 standard prompts](sdlc/standards/prompts/README.md) · [4 SDLC skills](.github/skills/README.md) (`/refine-ticket`, `/plan-ticket`, `/implement-ticket`, `/review-implementation`) · [`definition_of_ready.md`](sdlc/standards/definition_of_ready.md) · [`definition_of_done.md`](sdlc/standards/definition_of_done.md) · `architecture.md` (empty, to be derived) | [`04a_review_implementation.md`](sdlc/standards/prompts/04a_review_implementation.md) (AI review against the DoD)            |
+|                   | Guides (steer)                                                                                                                                                                                                                                                                                                                                                            | Sensors (check)                                                                                                   |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **Computational** | _none yet — see ideas below_                                                                                                                                                                                                                                                                                                                                              | `npm run lint` ([`eslint.config.mjs`](eslint.config.mjs)) · `npm test` (Vitest)                                   |
+| **Inferential**   | the [6 standard prompts](sdlc/standards/prompts/README.md) · [4 SDLC skills](.github/skills/README.md) (`/refine-ticket`, `/plan-ticket`, `/implement-ticket`, `/review-implementation`) · [`definition_of_ready.md`](sdlc/standards/definition_of_ready.md) · [`definition_of_done.md`](sdlc/standards/definition_of_done.md) · `architecture.md` (empty, to be derived) | [`04a_review_implementation.md`](sdlc/standards/prompts/04a_review_implementation.md) (AI review against the DoD) |
 
 The cell that's empty today, and anything else we think of along the way,
 goes into
@@ -101,9 +101,11 @@ npm run dev     # http://localhost:3000
 npm test        # the two example tests on the money math
 ```
 
-Three screens. **Overview** (`/`) answers _how much money do we have_: balance,
+Four screens. **Overview** (`/`) answers _how much money do we have_: balance,
 free-to-spend, a cashflow chart over week / month / three months, in-out-net
-tiles, the top categories and the last eight bookings. **Transactions**
+tiles, the top categories and the last eight bookings. **Spending** (`/spending`)
+is a historical bar chart of expenses, summarized by category or month for a
+selected date range. **Transactions**
 (`/transactions`) is the full ledger — searchable, filterable by category and
 direction, sortable by date and amount. **Assistant** (`/assistant`) is a chat
 that answers questions about the bookings (via a `search_transactions` tool)
@@ -157,14 +159,14 @@ active navigation item all derive from them, in both themes.
 
 ## Where to start
 
-| I want to…                     |                                                               |
-| ------------------------------ | ------------------------------------------------------------- |
-| understand how we work here    | [`CONCEPT.md`](CONCEPT.md)                                    |
-| know what goes in which folder | [`sdlc/README.md`](sdlc/README.md)                            |
+| I want to…                      |                                                                                                                                      |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| understand how we work here     | [`CONCEPT.md`](CONCEPT.md)                                                                                                           |
+| know what goes in which folder  | [`sdlc/README.md`](sdlc/README.md)                                                                                                   |
 | see what Guides & Sensors exist | [`#guides--sensors`](#guides--sensors) above, ideas in [`sdlc/harness-improvement-ideas/`](sdlc/harness-improvement-ideas/README.md) |
-| get the prompt for a step      | [`sdlc/standards/prompts/`](sdlc/standards/prompts/README.md) |
-| refresh the SDLC material      | [`prerequisites/`](prerequisites/README.md)                   |
-| look at the app                | `npm install && npm run dev`                                  |
+| get the prompt for a step       | [`sdlc/standards/prompts/`](sdlc/standards/prompts/README.md)                                                                        |
+| refresh the SDLC material       | [`prerequisites/`](prerequisites/README.md)                                                                                          |
+| look at the app                 | `npm install && npm run dev`                                                                                                         |
 
 ---
 

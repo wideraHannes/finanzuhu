@@ -2,7 +2,6 @@
 name: plan-ticket
 description: Create an implementation plan for a refined ticket. Use when the user wants to plan a story (ST-XXX).
 argument-hint: ST-XXX
-disable-model-invocation: true
 ---
 
 # Plan a ticket
