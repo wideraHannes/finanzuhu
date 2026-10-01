@@ -6,53 +6,14 @@ sorted into the Guides & Sensors grid from the main
 [README](../../README.md#guides--sensors). Pick one, build it, then move it
 into the README table and delete it here.
 
-Already built: the four SDLC skills in [`.github/skills/`](../../.github/skills/README.md)
-(`/refine-ticket`, `/plan-ticket`, `/implement-ticket`, `/review-implementation`).
+Already built: the four SDLC skills in [`.github/skills/`](../../.github/skills/README.md).
 
 |                   | Guides (steer)                                                  | Sensors (check)                                                            |
 | ----------------- | --------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| **Computational** | SessionStart hook (open tickets) · `new-ticket` script          | Stop hook (lint + test) · PostToolUse eslint · protect hook · `typecheck` · backlog check |
+| **Computational** | SessionStart hook (open tickets) · `new-ticket` script          | PostToolUse eslint · protect hook · `typecheck` · backlog check |
 | **Inferential**   | scoped `*.instructions.md` · Planner agent                      | Reviewer agent · `close-ticket` DoD skill                                  |
 
 ---
-
-## 1. Stop hook — quality gate (Sensor · Computational)
-
-The most valuable one: before the agent may say "done", lint and tests must be
-green. Otherwise it is sent back with the failing output. Runs every time, no
-matter what the model decides.
-
-```json
-// .github/hooks/harness.json
-{
-  "hooks": {
-    "Stop": [{ "type": "command", "command": "node scripts/hooks/quality-gate.mjs", "timeout": 120 }]
-  }
-}
-```
-
-```js
-// scripts/hooks/quality-gate.mjs
-import { execSync } from 'node:child_process';
-
-const event = JSON.parse(await new Response(process.stdin).text());
-if (event.stop_hook_active) process.exit(0); // already sent back once — don't loop
-
-try {
-  execSync('npm run lint --silent && npm test --silent', { stdio: 'pipe' });
-} catch (error) {
-  console.log(JSON.stringify({
-    hookSpecificOutput: {
-      hookEventName: 'Stop',
-      decision: 'block',
-      reason: `Lint or tests fail — fix before finishing:\n${String(error.stdout).slice(-2000)}`,
-    },
-  }));
-}
-```
-
-Optionally skip when `git status --porcelain` shows no changes under `src/` or
-`tests/`, so Q&A sessions stay fast.
 
 ## 2. `close-ticket` skill — DoD gate (Sensor · Inferential)
 
@@ -131,7 +92,7 @@ Check the exact tool names in the tools picker — they differ between VS Code v
 
 ## 6. More hooks (Computational)
 
-Same `.github/hooks/harness.json`. The VS Code local harness **ignores
+Configured in `.github/hooks/*.json`. The VS Code local harness **ignores
 `matcher`**, so each script filters on `tool_name` / `tool_input` itself.
 
 - **PostToolUse → eslint on the edited file** — run `npx eslint <file>` for
@@ -158,12 +119,12 @@ Same `.github/hooks/harness.json`. The VS Code local harness **ignores
 
 | # | What                                   | Effort | Why                                          |
 | - | -------------------------------------- | ------ | -------------------------------------------- |
-| 1 | Stop hook + `check` script (§1, §7)    | 20 min | "Done" can't be green-washed                 |
-| 2 | `close-ticket` skill (§2)              | 15 min | Turns the DoD into an enforced gate          |
+| 1 | `close-ticket` skill (§2)              | 15 min | Turns the DoD into an enforced gate          |
+| 2 | `check` + `typecheck` scripts (§7)     | 10 min | One command for humans and the agent         |
 | 3 | SessionStart hook (§3)                 | 15 min | First computational Guide                    |
 | 4 | Scoped instructions (§4)               | 15 min | Cheap, targeted context                      |
 | 5 | Planner / Reviewer agents (§5)         | 20 min | Tool restriction + visible handoffs          |
-| 6 | PostToolUse / PreToolUse hooks (§6)    | 20 min | Nice to have once the gate is in place       |
+| 6 | PostToolUse / PreToolUse hooks (§6)    | 20 min | Nice to have                                 |
 
 ## Caveats
 
@@ -171,5 +132,6 @@ Same `.github/hooks/harness.json`. The VS Code local harness **ignores
   Code — test each hook in the harness the workshop actually uses.
 - Prompt files (`*.prompt.md`) are deprecated for Agent Host sessions — use
   skills instead.
-- A Stop hook running the full suite costs time on every turn. Vitest is fast
-  here today; revisit if that changes.
+- A Stop hook (lint + test before the agent may finish) was tried and dropped:
+  detecting the implement step from the transcript was fragile, and a git
+  pre-commit hook (§7) covers the same with less machinery.
