@@ -1,8 +1,8 @@
 # ST-004 — Implementation plan: Historical spending overview
 
-**Story:** [`refined/ST-004.md`](../refined/ST-004.md)  
-**Standards:** [`architecture.md`](../../standards/architecture.md) ·
-[`definition_of_done.md`](../../standards/definition_of_done.md)
+**Story:** [`refined/ST-004.md`](../../refined/done/ST-004.md)  
+**Standards:** [`architecture.md`](../../../standards/architecture.md) ·
+[`definition_of_done.md`](../../../standards/definition_of_done.md)
 
 ## Approach
 

@@ -1,8 +1,8 @@
 # ST-003 — Implementation plan: Manage transactions
 
-**Story:** [`refined/ST-003.md`](../refined/ST-003.md)  
-**Standards:** [`architecture.md`](../../standards/architecture.md) ·
-[`definition_of_done.md`](../../standards/definition_of_done.md)
+**Story:** [`refined/ST-003.md`](../../refined/done/ST-003.md)  
+**Standards:** [`architecture.md`](../../../standards/architecture.md) ·
+[`definition_of_done.md`](../../../standards/definition_of_done.md)
 
 ## Current state and constraints
 
