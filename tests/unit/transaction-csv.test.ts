@@ -20,7 +20,12 @@ function tx(overrides: Partial<Transaction> = {}): Transaction {
 
 describe("transactionsToCsv", () => {
   it("exports exactly the visible table columns with table formatting", () => {
-    expect(transactionsToCsv([tx(), tx({ id: "income", amount: 1250, method: "bank_transfer" })])).toBe(
+    expect(
+      transactionsToCsv([
+        tx(),
+        tx({ id: "income", amount: 1250, method: "bank_transfer" }),
+      ]),
+    ).toBe(
       [
         "date;description;category;method;amount",
         "25.09.26;Weekly groceries;Groceries;Direct debit;-12,50 €",
@@ -58,6 +63,8 @@ describe("transactionsToCsv", () => {
   });
 
   it("exports only a header when the ledger is empty", () => {
-    expect(transactionsToCsv([])).toBe("date;description;category;method;amount");
+    expect(transactionsToCsv([])).toBe(
+      "date;description;category;method;amount",
+    );
   });
 });

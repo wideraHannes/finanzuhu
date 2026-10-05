@@ -1,4 +1,8 @@
-import { formatPaymentMethod, formatShortDate, formatSignedEUR } from "@/lib/format";
+import {
+  formatPaymentMethod,
+  formatShortDate,
+  formatSignedEUR,
+} from "@/lib/format";
 import type { Transaction } from "@/lib/finance";
 
 const DELIMITER = ";";

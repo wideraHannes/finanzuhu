@@ -143,7 +143,11 @@ export default function TransactionsPage() {
         </p>
         <div className="flex flex-col items-end gap-1 text-right">
           <div className="flex gap-2">
-            <Button variant="outline" onClick={exportCsv} disabled={isExporting}>
+            <Button
+              variant="outline"
+              onClick={exportCsv}
+              disabled={isExporting}
+            >
               <Download className="size-4" aria-hidden />
               {isExporting ? "Exporting…" : "Export CSV"}
             </Button>
