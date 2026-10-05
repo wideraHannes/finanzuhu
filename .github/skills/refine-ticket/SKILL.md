@@ -2,7 +2,6 @@
 name: refine-ticket
 description: Refine a raw ticket from sdlc/backlog/unrefined/ into an implementation-ready story. Use when the user wants to refine a story (ST-XXX).
 argument-hint: ST-XXX
-disable-model-invocation: true
 ---
 
 # Refine a ticket

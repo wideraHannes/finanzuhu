@@ -38,3 +38,9 @@ export function formatDate(iso: string): string {
 export function formatShortDate(iso: string): string {
   return shortDay.format(new Date(`${iso}T00:00:00`));
 }
+
+/** "direct_debit" -> "Direct debit" */
+export function formatPaymentMethod(method: string): string {
+  const words = method.replace(/_/g, " ");
+  return words[0].toUpperCase() + words.slice(1);
+}

@@ -15,7 +15,11 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { formatShortDate, formatSignedEUR } from "@/lib/format";
+import {
+  formatPaymentMethod,
+  formatShortDate,
+  formatSignedEUR,
+} from "@/lib/format";
 import type { Transaction } from "@/lib/finance";
 
 /** Only date and amount sort — the other three columns have no useful order. */
@@ -24,12 +28,6 @@ type Sort = { column: SortColumn; descending: boolean };
 
 /** On a phone only date, description and amount fit. */
 const NARROW = "hidden md:table-cell";
-
-/** "direct_debit" -> "Direct debit" */
-function labelMethod(method: string): string {
-  const words = method.replace(/_/g, " ");
-  return words[0].toUpperCase() + words.slice(1);
-}
 
 function SortButton({
   column,
@@ -153,7 +151,7 @@ export function TransactionTable({
                 <Badge variant="secondary">{transaction.category}</Badge>
               </TableCell>
               <TableCell className={cn(NARROW, "text-muted-foreground")}>
-                {labelMethod(transaction.method)}
+                {formatPaymentMethod(transaction.method)}
               </TableCell>
               <TableCell
                 className={cn(

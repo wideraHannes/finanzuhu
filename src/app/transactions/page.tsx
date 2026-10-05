@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { Search } from "lucide-react";
+import { Download, Search } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -17,6 +17,7 @@ import {
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TransactionTable } from "@/features/transactions/transaction-table";
 import { TransactionForm } from "@/features/transactions/transaction-form";
+import { transactionsToCsv } from "@/features/transactions/transaction-csv";
 import {
   createTransaction,
   fetchTransactions,
@@ -38,6 +39,8 @@ const TYPES: { value: TransactionFilters["type"]; label: string }[] = [
 export default function TransactionsPage() {
   const [search, setSearch] = useState("");
   const [filters, setFilters] = useState<TransactionFilters>(NO_FILTERS);
+  const [isExporting, setIsExporting] = useState(false);
+  const [exportError, setExportError] = useState<string>();
   const queryClient = useQueryClient();
 
   // The input stays instant; the query follows 200 ms later.
@@ -93,6 +96,28 @@ export default function TransactionsPage() {
     setFilters(NO_FILTERS);
   }
 
+  async function exportCsv() {
+    setIsExporting(true);
+    setExportError(undefined);
+
+    try {
+      const { items } = await fetchTransactions(NO_FILTERS);
+      const blob = new Blob([transactionsToCsv(items)], {
+        type: "text/csv;charset=utf-8",
+      });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "finanzuhu-transactions.csv";
+      link.click();
+      URL.revokeObjectURL(url);
+    } catch {
+      setExportError("The CSV could not be downloaded. Please try again.");
+    } finally {
+      setIsExporting(false);
+    }
+  }
+
   return (
     <div className="space-y-4">
       <div className="space-y-1">
@@ -116,16 +141,27 @@ export default function TransactionsPage() {
         <p className="text-sm text-muted-foreground">
           Restore the original demo ledger at any time.
         </p>
-        <div className="text-right">
-          <Button
-            variant="outline"
-            onClick={reset}
-            disabled={resetMutation.isPending}
-          >
-            {resetMutation.isPending ? "Resetting…" : "Reset transactions"}
-          </Button>
+        <div className="flex flex-col items-end gap-1 text-right">
+          <div className="flex gap-2">
+            <Button variant="outline" onClick={exportCsv} disabled={isExporting}>
+              <Download className="size-4" aria-hidden />
+              {isExporting ? "Exporting…" : "Export CSV"}
+            </Button>
+            <Button
+              variant="outline"
+              onClick={reset}
+              disabled={resetMutation.isPending}
+            >
+              {resetMutation.isPending ? "Resetting…" : "Reset transactions"}
+            </Button>
+          </div>
+          {exportError && (
+            <p className="text-sm text-destructive" role="alert">
+              {exportError}
+            </p>
+          )}
           {resetMutation.error && (
-            <p className="mt-1 text-sm text-destructive" role="alert">
+            <p className="text-sm text-destructive" role="alert">
               {resetMutation.error.message}
             </p>
           )}
