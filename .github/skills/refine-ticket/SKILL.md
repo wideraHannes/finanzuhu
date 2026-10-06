@@ -7,6 +7,8 @@ argument-hint: ST-XXX
 # Refine a ticket
 
 **Input:** `sdlc/backlog/unrefined/ST-XXX.md`
+- **Alternative input:** Use the installed `gh` command line tool to get the ticket from GitHub. like so, `GH_PAGER=cat gh issue view <number> -json title,body,state,comments` will return the ticket content as json.
+
 **Output:** `sdlc/backlog/refined/ST-XXX.md`
 
 ## The refined story contains
@@ -23,4 +25,5 @@ argument-hint: ST-XXX
 - Keep the story intent intact.
 - Keep it small enough for one iteration.
 - Do **not** invent requirements or make product decisions — ask focused questions instead.
+- Always ask questions one after another to engage a constructive dialog.
 - Do **not** modify the unrefined ticket.
