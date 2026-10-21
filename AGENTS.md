@@ -1,9 +1,12 @@
 # AGENTS.md
 
-Base repository for an AI-assisted SDLC. The flow lives in `sdlc/`, the app is
-**Finanzuhu** in `src/` (Next.js 15, Tailwind v4, TanStack Query, Vitest).
+Base repository for an AI-assisted SDLC. The flow lives in `sdlc/`, and the
+Finanzuhu apps live under `apps/`. The TypeScript app is in `apps/typescript/`
+(Next.js, Tailwind v4, TanStack Query, Vitest). Shared sample data lives in
+`data/`.
 
-- `npm run dev` · `npm test` · `npm run lint`
+- `npm --prefix apps/typescript run dev` · `npm --prefix apps/typescript test` ·
+  `npm --prefix apps/typescript run lint`
 
 ## Tickets
 
@@ -13,6 +16,10 @@ of Done, not just because code was written.
 
 When asked to write an unrefined ticket, keep it really sparse (just the idea),
 so the difference is visible once it gets refined.
+
+The SDLC workflow, tickets, and standards are repository-wide. Put application
+code in the language-specific app selected for the task; do not duplicate
+workflow materials or shared sample data inside an app.
 
 ## Keep it simple
 

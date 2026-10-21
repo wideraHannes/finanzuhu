@@ -5,7 +5,7 @@ import { join } from "node:path";
 
 import type { Transaction } from "@/lib/finance";
 
-const CSV = join(process.cwd(), "data", "transactions.csv");
+const CSV = join(process.cwd(), "..", "..", "data", "transactions.csv");
 
 let cache: Transaction[] | null = null;
 

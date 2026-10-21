@@ -12,10 +12,13 @@ argument-hint: ST-XXX
 ## Preparation
 
 - Inspect the current implementation and relevant tests.
-- Keep the architecture: routes in `src/app/`, API routes in `src/app/api/`,
-  feature UI in `src/features/`, shared UI in `src/components/`,
-  pure domain logic in `src/lib/`, unit tests in `tests/unit/`.
-- Data flows one way: `data/` → API / domain logic → features → UI.
+- Keep the selected app's architecture. For TypeScript: routes in
+  `apps/typescript/src/app/`, API routes in `apps/typescript/src/app/api/`,
+  feature UI in `apps/typescript/src/features/`, shared UI in
+  `apps/typescript/src/components/`, pure domain logic in
+  `apps/typescript/src/lib/`, and unit tests in
+  `apps/typescript/tests/unit/`.
+- Shared data flows one way: root `data/` → API / domain logic → features → UI.
 
 ## The plan covers
 

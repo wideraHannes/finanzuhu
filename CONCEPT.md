@@ -28,7 +28,7 @@ LLM).
 
 |                   | Guides                                                    | Sensors                    |
 | ----------------- | --------------------------------------------------------- | -------------------------- |
-| **Computational** | _none yet_                                                | `npm run lint`, `npm test` |
+| **Computational** | _none yet_                                                | TypeScript: `npm --prefix apps/typescript run lint`, `npm --prefix apps/typescript test` |
 | **Inferential**   | skills, prompts, `AGENTS.md`, DoR, DoD, `architecture.md` | `/review-implementation`   |
 
 The harness is deliberately thin, so there is room to grow it. Some ideas:

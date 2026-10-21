@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="public/finanzuhu-logo.png" alt="Finanzuhu" width="420">
+<img src="apps/typescript/public/finanzuhu-logo.png" alt="Finanzuhu" width="420">
 
 # AI-Assisted SDLC Base Repository
 
@@ -10,12 +10,20 @@
 
 </div>
 
-## Quickstart
+## Choose an app
+
+Finanzuhu is a teaching project for AI-assisted coding. Choose a language
+implementation under [`apps/`](apps/); each app has its own stack and setup.
+Shared workflow, sample data, and tickets stay at the repository root.
+
+The TypeScript web app is in [`apps/typescript/`](apps/typescript/README.md).
+
+## Quickstart: TypeScript
 
 ```bash
-npm install
-npm run dev     # http://localhost:3000
-npm test
+npm --prefix apps/typescript install
+npm --prefix apps/typescript run dev     # http://localhost:3000
+npm --prefix apps/typescript test
 ```
 
 Then take the first ticket through the loop in OpenCode:
@@ -46,13 +54,13 @@ The branch `ai-enablement-1` shows where the first workshop ended up.
 
 <img src="assets/app-demo.png" alt="The Finanzuhu overview: balance, cashflow chart, in-out-net tiles" width="820">
 
-Two screens: **Overview** (`/`) and **Transactions** (`/transactions`).
-Next.js 15, Tailwind v4, shadcn/ui, TanStack Query, Recharts, Vitest.
+Two screens: **Overview** (`/`) and **Transactions** (`/`). The TypeScript app
+uses Next.js, Tailwind v4, shadcn/ui, TanStack Query, Recharts, and Vitest.
 
-- **Static data:** `data/transactions.csv` and `data/account.json`. No
-  database, no clock, the same numbers on every machine.
+- **Shared static data:** root `data/transactions.csv` and `data/account.json`.
+  No database, no clock, the same numbers on every machine and in every app.
 - **Seams:** UI (cards, pages), API (`/api/summary`, `/api/transactions`),
-  domain (pure functions in `src/lib/finance.ts`).
+  domain (pure functions in `apps/typescript/src/lib/finance.ts`).
 
 Demo only, not a real financial product.
 

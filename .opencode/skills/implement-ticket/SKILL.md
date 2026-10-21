@@ -14,15 +14,17 @@ disable-model-invocation: true
 ## Before you start
 
 - Check that the plan still matches the codebase.
-- Keep the architecture: pure domain logic in `src/lib/`, feature UI in
-  `src/features/`, API routes in `src/app/api/`, one-way data flow
-  `data/` → API / domain logic → features → UI.
+- Keep the selected app's architecture. For TypeScript: pure domain logic in
+  `apps/typescript/src/lib/`, feature UI in `apps/typescript/src/features/`, API
+  routes in `apps/typescript/src/app/api/`; read shared `data/` without copying
+  it into the app.
 - Build the smallest complete solution that fulfils every acceptance criterion.
 
 ## Quality gates
 
-- Add or update tests in `tests/unit/` and see each new test fail once.
-- Run `npm run lint` and `npm test`; fix every failure the change caused.
+- For TypeScript, add or update tests in `apps/typescript/tests/unit/` and see
+  each new test fail once. Run `npm --prefix apps/typescript run lint` and
+  `npm --prefix apps/typescript test`; fix every failure the change caused.
 
 ## Rules
 

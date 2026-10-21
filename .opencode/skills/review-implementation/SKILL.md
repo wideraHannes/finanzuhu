@@ -16,8 +16,11 @@ context: fork
 
 - [ ] All acceptance criteria are fulfilled
 - [ ] Tests cover the new behavior
-- [ ] `npm run lint` and `npm test` are green (run them yourself)
-- [ ] Architecture kept: domain logic pure in `src/lib/`, one-way data flow
+- [ ] The selected app's lint and test commands are green (run them yourself).
+      For TypeScript: `npm --prefix apps/typescript run lint` and
+      `npm --prefix apps/typescript test`.
+- [ ] Architecture kept: domain logic pure in the selected app and one-way data
+      flow from shared root `data/`.
 - [ ] Readable: meaningful names, no dead code, no commented-out leftovers
 - [ ] Error handling beyond the happy path
 - [ ] Security: no secrets in code, inputs validated
