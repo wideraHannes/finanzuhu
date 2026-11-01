@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/shell :: head('Overview')}"></head>
+<body>
+<header th:replace="~{fragments/shell :: header}"></header>
+<main>
+  <section class="balance-section" aria-label="Account balance">
+    <div><h1>Balance</h1><p id="balance" class="balance loading">Loading…</p><p id="as-of" class="muted">Loading the account…</p></div>
+    <div class="reserve"><span>Free to spend</span><strong id="free-to-spend">—</strong><p>After your recurring costs</p></div>
+  </section>
+  <div class="section-heading"><h2>Your cashflow</h2><div class="segments" role="group" aria-label="Time range">
+    <button data-range="week" aria-pressed="false">Week</button><button data-range="month" aria-pressed="true">Month</button><button data-range="3m" aria-pressed="false">3 Months</button>
+  </div></div>
+  <div id="summary-error" class="error" role="alert" hidden><p>The summary could not be loaded.</p><button id="summary-retry">Try again</button></div>
+  <section id="summary-content" aria-busy="true">
+    <div class="totals"><div><span>In</span><strong id="income" class="income">—</strong></div><div><span>Out</span><strong id="expenses" class="expense">—</strong></div><div><span>Net</span><strong id="net">—</strong></div></div>
+    <div class="chart-panel"><p id="chart-loading" class="muted">Loading cashflow…</p><div class="chart-wrap"><canvas id="cashflow" role="img" aria-label="Cashflow: income and expense bars with running account balance"></canvas></div><details><summary>View chart data</summary><div class="table-scroll"><table><thead><tr><th>Date</th><th>In</th><th>Out</th><th>Balance</th></tr></thead><tbody id="chart-data"></tbody></table></div></details></div>
+  </section>
+  <div class="lower-grid"><section class="panel"><h2>Top categories</h2><ul id="categories" class="categories"><li class="muted">Loading categories…</li></ul></section>
+  <section class="panel"><div class="section-heading"><h2>Recent activity</h2><a href="/transactions">View all</a></div><div id="recent-error" class="error" hidden><p>The bookings could not be loaded.</p><button id="recent-retry">Try again</button></div><ul id="recent" class="recent"><li class="muted">Loading bookings…</li></ul></section></div>
+  <noscript><p>This overview requires JavaScript to load the ledger and chart.</p></noscript>
+</main>
+<script src="/webjars/chart.js/4.5.1/dist/chart.umd.min.js"></script>
+<script type="module" src="/js/overview.js"></script>
+</body>
+</html>

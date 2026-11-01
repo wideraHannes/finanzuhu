@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Overview · Finanzuhu{% endblock %}
+{% block head %}<script src="{{ url_for('static', filename='overview.js') }}" defer></script>{% endblock %}
+{% block content %}
+<section class="overview-page" aria-labelledby="page-title">
+  <div class="page-heading">
+    <div><p class="eyebrow">YOUR MONEY, IN FOCUS</p><h1 id="page-title">Overview</h1></div>
+    <span class="ledger-badge"><span class="status-dot"></span> Ledger up to date</span>
+  </div>
+
+  <section class="balance-panel" aria-label="Account balance">
+    <div class="balance-main">
+      <div class="balance-label"><span class="balance-symbol" aria-hidden="true">€</span>Current balance</div>
+      <p id="balance-value" class="balance-value" aria-live="polite">Loading balance…</p>
+      <p class="balance-caption">Available after known standing orders <span id="as-of-date">—</span></p>
+    </div>
+    <div class="spend-box"><span class="spend-label">Free to spend</span><strong id="free-to-spend">—</strong><span class="spend-footnote">After recurring costs</span></div>
+    <div class="balance-decoration" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  </section>
+
+  <div class="section-tools">
+    <div><h2 class="section-title">Cashflow</h2><p class="section-subtitle">Income, spending, and balance over time</p></div>
+    <div class="range-switch" role="group" aria-label="Cashflow time range">
+      <button type="button" data-range="week">Week</button><button type="button" data-range="month" aria-pressed="true">Month</button><button type="button" data-range="3m">3 months</button>
+    </div>
+  </div>
+
+  <section class="metrics-grid" aria-label="Selected period summary">
+    <article class="metric-card chart-card">
+      <div class="chart-legend"><span><i class="legend-dot income-dot"></i>In</span><span><i class="legend-dot expense-dot"></i>Out</span><span><i class="legend-line"></i>Balance</span></div>
+      <div id="cashflow-chart" class="chart-area" role="img" aria-label="Cashflow chart loading"></div>
+      <div id="chart-error" class="inline-error" hidden><span>The summary could not be loaded.</span><button class="text-button" data-retry-summary type="button">Try again</button></div>
+    </article>
+    <div class="totals-stack">
+      <article class="total-card income-card"><span class="total-label"><span class="metric-glyph">↗</span>Money in</span><strong id="income-value">—</strong><span class="total-period">Selected period</span></article>
+      <article class="total-card expense-card"><span class="total-label"><span class="metric-glyph">↘</span>Money out</span><strong id="expenses-value">—</strong><span class="total-period">Selected period</span></article>
+      <article class="total-card net-card"><span class="total-label">Net movement</span><strong id="net-value">—</strong><span class="total-period">Income less expenses</span></article>
+    </div>
+  </section>
+
+  <section class="lower-grid">
+    <article class="surface category-surface">
+      <div class="surface-heading"><div><h2 class="section-title">Where it goes</h2><p class="section-subtitle">Largest spending categories</p></div><span class="surface-index">01</span></div>
+      <div id="categories-list" class="category-list" aria-live="polite"><div class="loading-line">Loading categories…</div></div>
+    </article>
+    <article class="surface activity-surface">
+      <div class="surface-heading"><div><h2 class="section-title">Recent activity</h2><p class="section-subtitle">Latest movements in your account</p></div><a class="quiet-link" href="{{ url_for('transactions_page') }}">All transactions <span aria-hidden="true">↗</span></a></div>
+      <div id="recent-list" class="activity-list" aria-live="polite"><div class="loading-line">Loading activity…</div></div>
+    </article>
+  </section>
+</section>
+{% endblock %}

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/shell :: head('Transactions')}"></head>
+<body>
+<header th:replace="~{fragments/shell :: header}"></header>
+<main>
+  <div class="page-heading"><h1>Transactions</h1><p id="booking-count" class="muted" aria-live="polite">Loading the ledger…</p></div>
+  <form id="filters" class="filters" role="search">
+    <label class="search-label"><span class="sr-only">Search bookings</span><input id="search" type="search" placeholder="Search description or counterparty" autocomplete="off"></label>
+    <label><span class="sr-only">Category</span><select id="category"><option value="">All categories</option></select></label>
+    <div class="segments" role="group" aria-label="Direction"><button type="button" data-type="" aria-pressed="true">All</button><button type="button" data-type="income" aria-pressed="false">Income</button><button type="button" data-type="expense" aria-pressed="false">Expenses</button></div>
+  </form>
+  <section class="ledger panel" aria-label="Bookings">
+    <div id="transactions-error" class="error" role="alert" hidden><p>The bookings could not be loaded.</p><button id="transactions-retry">Try again</button></div>
+    <p id="transactions-loading" class="muted" role="status">Loading bookings…</p>
+    <div class="table-scroll"><table id="transactions-table" aria-busy="true"><thead><tr><th id="date-heading" aria-sort="descending"><button data-sort="date">Date <span aria-hidden="true">↓</span></button></th><th>Description</th><th class="wide">Category</th><th class="wide">Method</th><th id="amount-heading" class="amount"><button data-sort="amount">Amount <span aria-hidden="true">↕</span></button></th></tr></thead><tbody id="bookings"></tbody></table></div>
+    <div id="empty-results" class="empty" hidden><p>No booking matches these filters.</p><button id="clear-filters">Clear filters</button></div>
+  </section>
+  <noscript><p>This ledger requires JavaScript for search and sorting.</p></noscript>
+</main>
+<script type="module" src="/js/transactions.js"></script>
+</body>
+</html>

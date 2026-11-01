@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <title>{% block title %}Finanzuhu{% endblock %}</title>
+    <meta name="description" content="A clear view of your account and spending.">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='finanzuhu-logo.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+    <script src="{{ url_for('static', filename='theme.js') }}" defer></script>
+    {% block head %}{% endblock %}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="app-frame">
+      <aside class="rail" aria-label="Application navigation">
+        <a class="brand" href="{{ url_for('overview') }}" aria-label="Finanzuhu home">
+          <span class="brand-plate"><img src="{{ url_for('static', filename='finanzuhu-logo.png') }}" alt="" width="112" height="44"></span>
+        </a>
+        <nav class="primary-nav" aria-label="Main">
+          <a href="{{ url_for('overview') }}" {% if request.endpoint == 'overview' %}aria-current="page"{% endif %}>
+            <span class="nav-icon" aria-hidden="true">◫</span><span>Overview</span>
+          </a>
+          <a href="{{ url_for('transactions_page') }}" {% if request.endpoint == 'transactions_page' %}aria-current="page"{% endif %}>
+            <span class="nav-icon" aria-hidden="true">▤</span><span>Transactions</span>
+          </a>
+        </nav>
+        <div class="rail-note"><span class="status-dot"></span>Demo account</div>
+      </aside>
+
+      <div class="workspace">
+        <header class="topbar">
+          <div class="crumb"><span class="crumb-overline">PERSONAL FINANCE</span><span class="crumb-divider">/</span><span>{% block section_name %}Overview{% endblock %}</span></div>
+          <div class="account-tools">
+            <div class="account-chip"><span class="account-avatar" aria-hidden="true">G</span><span class="account-copy"><strong>{{ account.name }}</strong><small>DE12 3456 ···· 7890</small></span></div>
+            <button class="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme"><span class="theme-icon" aria-hidden="true">◐</span></button>
+          </div>
+        </header>
+        <main id="main" class="content">
+          {% block content %}{% endblock %}
+        </main>
+        <footer class="footer"><span>Finanzuhu</span><span>Private by design · Sample ledger</span></footer>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title)">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Personal finance overview for one checking account.">
+  <title th:text="${title} + ' · Finanzuhu'">Finanzuhu</title>
+  <script src="/js/theme.js"></script>
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+<header th:fragment="header" class="header">
+  <a href="/" class="brand" aria-label="Finanzuhu — overview"><span class="owl" aria-hidden="true">◉◉</span><span>finanzuhu</span></a>
+  <nav aria-label="Main">
+    <a href="/" th:attr="aria-current=${screen == 'overview' ? 'page' : null}">Overview</a>
+    <a href="/transactions" th:attr="aria-current=${screen == 'transactions' ? 'page' : null}">Transactions</a>
+  </nav>
+  <div class="account"><strong th:text="${account.name}">Girokonto</strong><span>DE12 3456 ···· 7890</span></div>
+  <button id="theme-toggle" class="icon-button" aria-label="Toggle theme" type="button">◐</button>
+</header>
+</body>
+</html>

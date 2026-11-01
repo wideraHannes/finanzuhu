@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Transactions · Finanzuhu{% endblock %}
+{% block section_name %}Transactions{% endblock %}
+{% block head %}<script src="{{ url_for('static', filename='transactions.js') }}" defer></script>{% endblock %}
+{% block content %}
+<section class="transactions-page" aria-labelledby="page-title">
+  <div class="page-heading transaction-heading">
+    <div><p class="eyebrow">YOUR ACCOUNT ACTIVITY</p><h1 id="page-title">Transactions</h1><p id="transaction-count" class="heading-caption">Loading ledger…</p></div>
+    <span class="ledger-badge"><span class="status-dot"></span>All bookings</span>
+  </div>
+
+  <section class="filter-panel" aria-label="Filter transactions">
+    <label class="search-field"><span class="search-icon" aria-hidden="true">⌕</span><span class="sr-only">Search description or counterparty</span><input id="search-input" type="search" placeholder="Search description or counterparty" autocomplete="off"></label>
+    <label class="select-field"><span class="sr-only">Category</span><select id="category-filter"><option value="">All categories</option></select></label>
+    <div class="type-switch" role="group" aria-label="Transaction direction"><button type="button" data-type="" aria-pressed="true">All</button><button type="button" data-type="income" aria-pressed="false">Income</button><button type="button" data-type="expense" aria-pressed="false">Expenses</button></div>
+  </section>
+
+  <section class="ledger-surface" aria-label="Transaction ledger">
+    <div id="transaction-error" class="table-state" hidden><p>The bookings could not be loaded.</p><button class="outline-button" id="retry-transactions" type="button">Try again</button></div>
+    <div id="transaction-empty" class="table-state" hidden><p>No booking matches these filters.</p><button class="outline-button" id="clear-filters" type="button">Clear filters</button></div>
+    <div id="table-loading" class="table-state">Loading transactions…</div>
+    <div class="table-scroll" id="table-scroll" hidden>
+      <table class="transaction-table">
+        <thead><tr>
+          <th scope="col" aria-sort="descending"><button class="sort-button" type="button" data-sort="date">Date <span aria-hidden="true">↓</span></button></th>
+          <th scope="col">Description</th><th scope="col" class="optional-column">Category</th><th scope="col" class="optional-column">Method</th>
+          <th scope="col" class="amount-heading" aria-sort="none"><button class="sort-button" type="button" data-sort="amount">Amount <span aria-hidden="true">↕</span></button></th>
+        </tr></thead>
+        <tbody id="transaction-rows"></tbody>
+      </table>
+    </div>
+  </section>
+</section>
+{% endblock %}

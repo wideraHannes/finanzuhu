@@ -12,9 +12,15 @@ Thumbs.db
 .env.*
 
 # Build output & dependencies
+target/
 build/
 dist/
 node_modules/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
 
 # Next.js
 **/.next/
