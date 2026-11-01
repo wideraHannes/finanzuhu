@@ -2,11 +2,9 @@
 
 <img src="apps/typescript/public/finanzuhu-logo.png" alt="Finanzuhu" width="420">
 
-# AI-Assisted SDLC Base Repository
+# AI-Assisted Enablement Repository
 
 **A starter project for AI-assisted development. Make it whatever you need.**
-
-<img src="assets/SDLC_loop.png" alt="The DevOps loop with the AI touchpoints per phase" width="620">
 
 </div>
 
@@ -53,24 +51,6 @@ uv run ruff check .
 
 Requires Java 25. See the [Java README](apps/java/README.md) for browser tests
 and packaged-JAR setup.
-
-## How to use it
-
-- **Workshop:** branch `ai-enablement-<n>` off `main`.
-- **On your own:** fork it.
-- **Other tools:** rename `.opencode/` to `.claude/` (Claude Code) or
-  `.github/` (Copilot). All of them read [`AGENTS.md`](AGENTS.md).
-
-The branch `ai-enablement-1` shows where the first workshop ended up.
-
-## Find your way
-
-| read                                              | to learn                                          |
-| ------------------------------------------------- | ------------------------------------------------- |
-| [`CONCEPT.md`](CONCEPT.md)                        | the idea, the default flow and the harness        |
-| [`sdlc/README.md`](sdlc/README.md)                | the flow: which ticket file goes where            |
-| [`.opencode/skills/`](.opencode/skills/README.md) | one skill per step                                |
-| [`sdlc/standards/`](sdlc/standards/)              | Definition of Ready / Done, architecture, prompts |
 
 ## Finanzuhu, the starter app
 
