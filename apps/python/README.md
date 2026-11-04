@@ -7,21 +7,22 @@ directory; it does not copy or modify that sample data.
 
 ## Run
 
-Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and run
-from this directory:
+Use Python 3.11 or newer and run from this directory:
 
 ```bash
-uv sync --extra dev
-uv run flask --app finanzuhu run --debug
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -e ".[dev]"
+flask --app finanzuhu run --debug
 ```
 
-Open http://localhost:5000. Python 3.11 or newer is required.
+Open http://localhost:5000.
 
 ## Checks
 
 ```bash
-uv run pytest
-uv run ruff check .
+pytest
+ruff check .
 ```
 
 ## Screens and APIs

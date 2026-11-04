@@ -36,10 +36,12 @@ Then take the first ticket through the loop in OpenCode:
 
 ```bash
 cd apps/python
-uv sync --extra dev
-uv run flask --app finanzuhu run --debug  # http://localhost:5000
-uv run pytest
-uv run ruff check .
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -e ".[dev]"
+flask --app finanzuhu run --debug  # http://localhost:5000
+pytest
+ruff check .
 ```
 
 ## Quickstart: Java
