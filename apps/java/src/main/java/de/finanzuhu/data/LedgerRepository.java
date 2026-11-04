@@ -26,7 +26,7 @@ public class LedgerRepository {
                 throw new IllegalArgumentException("Account fields are required");
             }
             List<String> lines = Files.readAllLines(path.resolve("transactions.csv"));
-            if (lines.isEmpty() || !lines.getFirst().equals("id,date,amount,description,counterparty,category,type,method,recurring")) {
+            if (lines.isEmpty() || !lines.get(0).equals("id,date,amount,description,counterparty,category,type,method,recurring")) {
                 throw new IllegalArgumentException("Unexpected ledger header");
             }
             var rows = new ArrayList<Transaction>();
@@ -42,7 +42,7 @@ public class LedgerRepository {
                 }
                 var row = new Transaction(fields[0], LocalDate.parse(fields[1]), new BigDecimal(fields[2]),
                         fields[3], fields[4], fields[5], fields[6], fields[7], Boolean.parseBoolean(fields[8]));
-                if (!rows.isEmpty() && row.date().isBefore(rows.getLast().date())) {
+                if (!rows.isEmpty() && row.date().isBefore(rows.get(rows.size() - 1).date())) {
                     throw new IllegalArgumentException("Ledger must be sorted by date");
                 }
                 rows.add(row);
@@ -56,5 +56,5 @@ public class LedgerRepository {
 
     public Account account() { return account; }
     public List<Transaction> transactions() { return transactions; }
-    public LocalDate referenceDate() { return transactions.getLast().date(); }
+    public LocalDate referenceDate() { return transactions.get(transactions.size() - 1).date(); }
 }

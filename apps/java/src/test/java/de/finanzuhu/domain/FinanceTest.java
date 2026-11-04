@@ -45,7 +45,7 @@ class FinanceTest {
                 tx("2026-09-20", "-25", "Food", "B", false),
                 tx("2026-09-20", "1000", "Salary", "C", false)), Range.WEEK, REFERENCE);
         assertThat(categories).extracting(Finance.CategoryShare::category).containsExactly("Rent", "Food");
-        assertThat(categories.getFirst().share()).isEqualByComparingTo("0.75");
+        assertThat(categories.get(0).share()).isEqualByComparingTo("0.75");
         assertThat(Finance.byCategory(List.of(), Range.MONTH, REFERENCE)).isEmpty();
     }
 
@@ -55,13 +55,13 @@ class FinanceTest {
                 tx("2026-09-25", "50", "Salary", "A", false));
         var series = Finance.dailySeries(rows, Range.WEEK, REFERENCE, new BigDecimal("1000"));
         assertThat(series).hasSize(7);
-        assertThat(series.getFirst().balance()).isEqualByComparingTo("1080");
+        assertThat(series.get(0).balance()).isEqualByComparingTo("1080");
         assertThat(series.get(1).expenses()).isZero();
-        assertThat(series.getLast().balance()).isEqualByComparingTo("1130");
+        assertThat(series.get(series.size() - 1).balance()).isEqualByComparingTo("1130");
         var weekly = Finance.dailySeries(List.of(tx("2026-09-26", "10", "Salary", "A", false)),
                 Range.THREE_MONTHS, REFERENCE, BigDecimal.ZERO);
         assertThat(weekly).hasSize(14);
-        assertThat(weekly.getLast().balance()).isEqualByComparingTo("10");
+        assertThat(weekly.get(weekly.size() - 1).balance()).isEqualByComparingTo("10");
     }
 
     @Test void reserveUsesLatestExpensePerContractAndCanMakeFreeToSpendNegative() {
