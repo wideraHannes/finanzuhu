@@ -51,7 +51,7 @@ ruff check .
 ./apps/java/mvnw -f apps/java/pom.xml verify
 ```
 
-Requires Java 25. See the [Java README](apps/java/README.md) for browser tests
+Requires Java 17. See the [Java README](apps/java/README.md) for browser tests
 and packaged-JAR setup.
 
 ## Finanzuhu, the starter app
