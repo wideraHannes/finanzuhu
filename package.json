@@ -1,0 +1,7 @@
+{
+  "name": "finanzuhu",
+  "private": true,
+  "devDependencies": {
+    "agent-browser": "^0.41.2"
+  }
+}
